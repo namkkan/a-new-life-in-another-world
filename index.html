@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#263d35">
+<title>A New Life in Another World</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+:root{--ink:#293a32;--muted:#718076;--forest:#365548;--moss:#748b68;--sage:#dce5d5;--cream:#f5f0df;--paper:#fffdf4;--gold:#c69b55;--line:#ded9c5;--rust:#a96e50;--shadow:0 12px 35px #24382d16}
+*{box-sizing:border-box}body{margin:0;background:#e8e6d6;color:var(--ink);font-family:'DM Sans',sans-serif}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;background-image:radial-gradient(#7e866a 1px,transparent 1px);background-size:13px 13px}
+button,input,textarea,select{font:inherit}button{cursor:pointer}
+.app{max-width:1440px;margin:auto;min-height:100vh;padding:22px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
+.brand{display:flex;align-items:center;gap:12px}.brandmark{width:48px;height:48px;border:2px solid var(--forest);border-radius:14px;background:#e0e8d7;display:grid;place-items:center;font-size:27px;box-shadow:3px 3px 0 var(--forest)}
+.brand h1{font:700 22px 'Playfair Display',serif;margin:0}.brand small{color:var(--muted);font:11px 'DM Mono';letter-spacing:1px;text-transform:uppercase}
+.top-actions{display:flex;gap:9px;align-items:center}.pill{border:1px solid var(--line);background:var(--paper);padding:9px 13px;border-radius:30px;font-size:12px;color:var(--forest)}
+.layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:18px}
+.sidebar,.panel,.hero,.stat,.quest,.tile{background:var(--paper);border:1px solid var(--line);border-radius:17px;box-shadow:var(--shadow)}
+.sidebar{padding:15px;height:max-content;position:sticky;top:15px}.side-label{font:10px 'DM Mono';color:var(--muted);letter-spacing:1.5px;margin:9px 10px 8px;text-transform:uppercase}
+.nav{display:flex;align-items:center;gap:11px;width:100%;border:0;background:transparent;padding:11px;border-radius:11px;text-align:left;color:#58695d;font-size:13px;margin:2px 0}.nav:hover,.nav.active{background:#e8eee1;color:var(--forest);font-weight:700}.nav span{font-size:18px;width:23px;text-align:center}
+.main{min-width:0}.hero{overflow:hidden;position:relative;padding:27px 30px;background:linear-gradient(110deg,#e8eddd 0%,#f8f0d9 62%,#e8d8b9 100%);min-height:195px;display:flex;justify-content:space-between;align-items:center}
+.hero:after{content:"✿  ❧  ✧";position:absolute;right:20px;top:10px;font-size:46px;color:#72876a;opacity:.2;letter-spacing:10px}
+.eyebrow{font:11px 'DM Mono';letter-spacing:1.5px;color:var(--moss);text-transform:uppercase}.hero h2{font:700 clamp(27px,4vw,40px) 'Playfair Display';margin:9px 0}.hero p{max-width:510px;color:#627064;line-height:1.6;font-size:14px;margin:0}
+.hero-art{font-size:100px;filter:drop-shadow(4px 7px 0 #6d79512a);margin-right:8%;z-index:1}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0}.stat{padding:14px 16px}.stat-top{display:flex;justify-content:space-between;color:var(--muted);font-size:11px}.stat strong{display:block;font:700 24px 'Playfair Display';margin-top:6px}.bar{height:7px;background:#e8e7d9;border-radius:8px;margin-top:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--moss);border-radius:8px}
+.content-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(260px,.7fr);gap:14px}.panel{padding:19px;margin-bottom:14px}.panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}.panel h3{font:700 20px 'Playfair Display';margin:0}.sub{font-size:12px;color:var(--muted);margin-top:4px}.quest-list{display:grid;gap:8px}.quest{box-shadow:none;padding:11px 12px;display:flex;align-items:center;gap:11px;border-radius:12px}.quest.done{background:#eef2e9;opacity:.76}.quest input{accent-color:var(--forest);width:18px;height:18px}.quest-info{flex:1}.quest-info b{display:block;font-size:13px}.quest-info small{color:var(--muted);font-size:11px}.xp{font:11px 'DM Mono';color:#a47b3e}
+.pixel-room{min-height:205px;border-radius:14px;background:linear-gradient(#d9e4d7 0 63%,#a9b28a 63%);position:relative;overflow:hidden;display:flex;align-items:end;justify-content:center;padding-bottom:12px}
+.pixel-room:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 0 12%,#b78c5d 12% 14%,transparent 14% 86%,#b78c5d 86% 88%,transparent 88%);opacity:.35}
+.room-window{position:absolute;top:18px;left:25px;width:75px;height:84px;border:7px solid #9b7956;border-radius:40px 40px 5px 5px;background:linear-gradient(#b6d1d1 0 55%,#e5d9a7 55%);box-shadow:inset 0 0 0 3px #f2e8d1}
+.room-shelf{position:absolute;right:20px;top:27px;font-size:29px;line-height:1.5;filter:drop-shadow(1px 2px #776)}.avatar{z-index:2;font-size:83px;filter:drop-shadow(3px 5px 0 #4b59453b)}.cat{position:absolute;bottom:16px;left:27%;font-size:33px}
+.room-caption{text-align:center;font:11px 'DM Mono';color:var(--muted);margin-top:9px}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.tile{padding:14px;box-shadow:none;text-align:left;transition:.15s}.tile:hover{transform:translateY(-2px);border-color:#9cac8b}.tile .emoji{font-size:27px}.tile b{display:block;font:600 14px 'Playfair Display';margin:8px 0 3px}.tile small{font-size:11px;color:var(--muted)}
+.page{display:none}.page.active{display:block}.page-title{font:700 30px 'Playfair Display';margin:3px 0 5px}.page-intro{color:var(--muted);font-size:13px;margin:0 0 18px;line-height:1.6}
+.field{display:grid;gap:6px;margin:12px 0}.field label{font:11px 'DM Mono';color:var(--muted);text-transform:uppercase;letter-spacing:.8px}.field input,.field textarea,.field select{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;background:#fffef9;color:var(--ink)}textarea{min-height:110px;resize:vertical}
+.btn{border:1px solid var(--forest);background:var(--forest);color:white;padding:10px 14px;border-radius:10px;font-size:12px}.btn.secondary{background:transparent;color:var(--forest)}.btn:active{transform:translateY(1px)}
+.avatar-preview{font-size:80px;background:#edf0e5;border-radius:15px;padding:20px;text-align:center}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.item{border-bottom:1px dashed var(--line);padding:12px 0;display:flex;justify-content:space-between;gap:12px;font-size:13px}.item:last-child{border:0}.tag{font:10px 'DM Mono';color:#8b7449;background:#f3ecd9;padding:5px 8px;border-radius:20px}
+.empty{padding:25px;text-align:center;color:var(--muted);font-size:13px}
+footer{text-align:center;color:#879083;font:10px 'DM Mono';padding:18px}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.sidebar{position:static;display:flex;overflow-x:auto;gap:3px;padding:8px}.side-label{display:none}.nav{white-space:nowrap;width:auto;padding:9px}.nav span{width:auto}.content-grid{grid-template-columns:1fr}.hero-art{font-size:75px;margin-right:0}}
+@media(max-width:560px){.app{padding:12px}.topbar{align-items:flex-start}.brand h1{font-size:18px}.top-actions .pill{display:none}.hero{padding:22px 18px}.hero-art{font-size:55px}.stats{grid-template-columns:repeat(2,1fr)}.tiles{grid-template-columns:repeat(2,1fr)}.form-row{grid-template-columns:1fr}.sidebar{margin:0 -2px}.nav{font-size:11px}.nav span{font-size:16px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="topbar">
+ <div class="brand"><div class="brandmark">🌿</div><div><h1>A New Life in Another World</h1><small>your little everyday adventure</small></div></div>
+ <div class="top-actions"><span class="pill" id="dateLabel">A new day awaits</span><span class="pill">✦ <b id="topLevel">Lv. 1</b></span></div>
+</header>
+<div class="layout">
+<aside class="sidebar">
+ <div class="side-label">Your adventure</div>
+ <button class="nav active" data-page="home"><span>🏡</span> Home</button>
+ <button class="nav" data-page="quests"><span>📜</span> Daily quests</button>
+ <button class="nav" data-page="character"><span>🧙</span> Character</button>
+ <button class="nav" data-page="world"><span>🗺️</span> World map</button>
+ <div class="side-label">Your journal</div>
+ <button class="nav" data-page="study"><span>📚</span> Ancient archives</button>
+ <button class="nav" data-page="garden"><span>🌱</span> Wild garden</button>
+ <button class="nav" data-page="kitchen"><span>🍲</span> Alchemist's kitchen</button>
+ <button class="nav" data-page="journal"><span>✒️</span> Personal journal</button>
+ <button class="nav" data-page="inventory"><span>🎒</span> Inventory</button>
+</aside>
+<main class="main">
+<section class="page active" id="page-home">
+ <div class="hero"><div><div class="eyebrow">✦ Chapter 01 · The beginning</div><h2>Welcome to your new life.</h2><p>A quieter kind of adventure begins here. Grow herbs, gather knowledge, cook something lovely, and take one small quest at a time. There is no rush, little wanderer.</p></div><div class="hero-art">🧙🏻‍♀️</div></div>
+ <div class="stats">
+  <div class="stat"><div class="stat-top"><span>EXPERIENCE</span><span>✦</span></div><strong><span id="xp">0</span> XP</strong><div class="bar"><i id="xpBar" style="width:0%"></i></div></div>
+  <div class="stat"><div class="stat-top"><span>LEVEL</span><span>🌟</span></div><strong id="level">1</strong><div class="sub" id="nextLevel">100 XP to next level</div></div>
+  <div class="stat"><div class="stat-top"><span>QUESTS DONE</span><span>📜</span></div><strong id="doneCount">0</strong><div class="sub">little victories today</div></div>
+  <div class="stat"><div class="stat-top"><span>YOUR TITLE</span><span>🍃</span></div><strong style="font-size:18px">Green Novice</strong><div class="sub">apprentice of the everyday</div></div>
+ </div>
+ <div class="content-grid">
+  <div><div class="panel"><div class="panel-head"><div><h3>Today's little quests</h3><div class="sub">Every small action counts. Rest is allowed, too.</div></div><button class="btn secondary" onclick="showPage('quests')">All quests →</button></div><div class="quest-list" id="homeQuests"></div></div>
+  <div class="panel"><div class="panel-head"><div><h3>Places to explore</h3><div class="sub">Choose where today's story takes you.</div></div></div><div class="tiles">
+   <button class="tile" onclick="showPage('garden')"><span class="emoji">🌿</span><b>The Wild Garden</b><small>Plants & herbalism</small></button>
+   <button class="tile" onclick="showPage('study')"><span class="emoji">📖</span><b>Ancient Archives</b><small>Study & knowledge</small></button>
+   <button class="tile" onclick="showPage('kitchen')"><span class="emoji">🥕</span><b>Alchemist's Kitchen</b><small>Food & recipes</small></button>
+   <button class="tile" onclick="showPage('journal')"><span class="emoji">🪶</span><b>Quiet Corner</b><small>Thoughts & memories</small></button>
+   <button class="tile" onclick="showPage('world')"><span class="emoji">🧭</span><b>Outer World</b><small>Walks & discoveries</small></button>
+   <button class="tile" onclick="showPage('character')"><span class="emoji">🧙</span><b>Your Character</b><small>Customize your look</small></button>
+  </div></div></div>
+  <div><div class="panel"><div class="panel-head"><div><h3>Your little refuge</h3><div class="sub">A room that will grow with you.</div></div><span class="tag">LEVEL 1</span></div><div class="pixel-room"><div class="room-window"></div><div class="room-shelf">📚<br>🪴🧪</div><div class="cat">🐈</div><div class="avatar" id="roomAvatar">🧙🏻‍♀️</div></div><div class="room-caption">THE HERBALIST'S ROOM · YOUR SAFE HAVEN</div></div>
+  <div class="panel"><h3>A note for today</h3><p style="font:italic 15px 'Playfair Display';line-height:1.6;color:#687969">“You do not need to transform your whole life in a day. Just plant one seed.”</p><div class="sub">A gentle reminder from your journal.</div></div></div>
+ </div>
+</section>
+<section class="page" id="page-quests"><h2 class="page-title">Daily quests</h2><p class="page-intro">Your quest board. Choose what feels possible today. You can edit these quests later; missing a day never takes anything away.</p><div class="panel"><div class="panel-head"><h3>Quest board</h3><span class="tag">RESETS EACH DAY</span></div><div class="quest-list" id="allQuests"></div><div class="field"><label>Add a personal quest</label><div style="display:flex;gap:8px"><input id="newQuest" placeholder="e.g. Water the basil plant"><button class="btn" onclick="addQuest()">Add +</button></div></div></div></section>
+<section class="page" id="page-character"><h2 class="page-title">Your character</h2><p class="page-intro">Every adventurer starts somewhere. Choose a name and appearance for your little everyday hero.</p><div class="content-grid"><div class="panel"><div class="avatar-preview" id="avatarPreview">🧙🏻‍♀️</div><div class="field"><label>Character name</label><input id="charName" value="Little Wanderer" maxlength="28"></div><div class="form-row"><div class="field"><label>Hair / style</label><select id="hair"><option value="🧙🏻‍♀️">Herbalist hood</option><option value="👩🏻‍🌾">Farmer</option><option value="🧝🏻‍♀️">Forest elf</option><option value="🧑🏻‍🎨">Artist</option><option value="🧑🏻‍🔬">Alchemist</option><option value="🧙🏽‍♀️">Witch · warm skin</option><option value="🧙🏿‍♀️">Witch · deep skin</option></select></div><div class="field"><label>Outfit</label><select id="outfit"><option>🌿 Green cloak</option><option>🧺 Linen apron</option><option>🧥 Travelling coat</option><option>🔮 Alchemist robes</option></select></div></div><button class="btn" onclick="saveCharacter()">Save character</button></div><div class="panel"><h3>Adventurer's record</h3><div class="item"><span>Current level</span><b id="charLevel">1</b></div><div class="item"><span>Experience earned</span><b id="charXP">0 XP</b></div><div class="item"><span>Path</span><b>Herbalist apprentice</b></div><div class="item"><span>Companion</span><b>🐈 A little cat</b></div><p class="sub" style="line-height:1.7">Your character is a symbol of your journey, not a measure of your worth. You can change your look whenever you like.</p></div></div></section>
+<section class="page" id="page-world"><h2 class="page-title">The known world</h2><p class="page-intro">A small map of the places that make up your new life. Each region holds its own kind of adventure.</p><div class="tiles">
+<button class="tile" onclick="showPage('garden')"><span class="emoji">🌳</span><b>The Wild Garden</b><small>Herbs, seeds, soil, seasons</small></button><button class="tile" onclick="showPage('study')"><span class="emoji">🏛️</span><b>The Ancient Archives</b><small>Books, lessons, examinations</small></button><button class="tile" onclick="showPage('kitchen')"><span class="emoji">🍎</span><b>The Alchemist's Kitchen</b><small>Simple meals from the earth</small></button><button class="tile" onclick="showPage('journal')"><span class="emoji">🏡</span><b>The Little Homestead</b><small>Home, routines, quiet rituals</small></button><button class="tile" onclick="showPage('quests')"><span class="emoji">🧭</span><b>The Outer World</b><small>Walks, markets, discoveries</small></button><button class="tile" onclick="showPage('character')"><span class="emoji">🎨</span><b>The Artisan's Workshop</b><small>Drawing, making, creating</small></button></div></section>
+<section class="page" id="page-study"><h2 class="page-title">The Ancient Archives</h2><p class="page-intro">A quiet place for your studies. Record a topic, a small goal, or what you learned today.</p><div class="panel"><h3>Study session</h3><div class="field"><label>What are you studying?</label><input id="studyTopic" placeholder="e.g. National libraries"></div><div class="form-row"><div class="field"><label>Minutes studied</label><input id="studyMinutes" type="number" min="1" value="25"></div><div class="field"><label>What did you learn?</label><input id="studyNote" placeholder="A small discovery..."></div></div><button class="btn" onclick="saveStudy()">Record session · +15 XP</button></div><div class="panel"><h3>Study chronicle</h3><div id="studyList" class="empty">Your first study session will appear here.</div></div></section>
+<section class="page" id="page-garden"><h2 class="page-title">The Wild Garden</h2><p class="page-intro">A growing collection of plants, seeds and little botanical discoveries. Start with the plants you already have around you.</p><div class="panel"><h3>Herbarium entry</h3><div class="form-row"><div class="field"><label>Plant name</label><input id="plantName" placeholder="Mint, basil, rosemary..."></div><div class="field"><label>Where is it?</label><input id="plantPlace" placeholder="Windowsill, balcony..."></div></div><div class="field"><label>Notes / care</label><textarea id="plantNote" placeholder="When did you water it? What does it need?"></textarea></div><button class="btn" onclick="savePlant()">Add to herbarium · +10 XP</button></div><div class="panel"><h3>Your botanical collection</h3><div id="plantList" class="empty">Your herbarium is waiting for its first leaf.</div></div></section>
+<section class="page" id="page-kitchen"><h2 class="page-title">The Alchemist's Kitchen</h2><p class="page-intro">A recipe journal for simple, comforting food. No rules, no forbidden ingredients: just ideas and discoveries.</p><div class="panel"><h3>Save a recipe</h3><div class="field"><label>Recipe name</label><input id="recipeName" placeholder="Roasted vegetables with herbs"></div><div class="field"><label>Ingredients and method</label><textarea id="recipeNote" placeholder="Ingredients, steps, little variations..."></textarea></div><button class="btn" onclick="saveRecipe()">Save recipe · +10 XP</button></div><div class="panel"><h3>Recipe book</h3><div id="recipeList" class="empty">Your first recipe will find its place here.</div></div></section>
+<section class="page" id="page-journal"><h2 class="page-title">The personal journal</h2><p class="page-intro">A private corner to leave a note about your day. It does not need to be beautiful or productive.</p><div class="panel"><h3>Today's page</h3><div class="field"><label>What happened today?</label><textarea id="journalText" placeholder="Today I noticed..."></textarea></div><button class="btn" onclick="saveJournal()">Save today's page</button></div><div class="panel"><h3>Previous pages</h3><div id="journalList" class="empty">Your story begins with the next sentence.</div></div></section>
+<section class="page" id="page-inventory"><h2 class="page-title">Your inventory</h2><p class="page-intro">Little treasures gathered along the way. This space will become a collection of discoveries and keepsakes.</p><div class="panel"><h3>Adventure pouch</h3><div class="item"><span>🌱 Botanical discoveries</span><b id="invPlants">0</b></div><div class="item"><span>📚 Study sessions</span><b id="invStudy">0</b></div><div class="item"><span>🍲 Saved recipes</span><b id="invRecipes">0</b></div><div class="item"><span>✒️ Journal pages</span><b id="invJournal">0</b></div></div><div class="panel"><h3>Save your progress</h3><p class="sub" style="line-height:1.7">Your adventure is saved in this browser on this device. Export a backup now and then so you can keep your progress safe.</p><button class="btn" onclick="exportSave()">Download backup</button> <button class="btn secondary" onclick="document.getElementById('importFile').click()">Import backup</button><input id="importFile" type="file" accept="application/json" hidden onchange="importSave(event)"></div></section>
+</main>
+</div>
+<footer>MADE OF SMALL STEPS · NO DEADLINES · NO PENALTIES FOR REST</footer>
+</div>
+<script>
+const KEY='anotherWorldSave_v1';
+const defaultQuests=[
+ {id:1,title:'Open the curtains and let the daylight in',detail:'A gentle start to the day',xp:5,done:false},
+ {id:2,title:'Drink a glass of water or make a cup of tea',detail:'Care for your adventurer',xp:5,done:false},
+ {id:3,title:'Study for 15 minutes',detail:'One page, one card, one small step',xp:15,done:false},
+ {id:4,title:'Eat something nourishing',detail:'A meal or snack that feels good',xp:10,done:false},
+ {id:5,title:'Move gently for 10 minutes',detail:'Stretch, walk, yoga or dance',xp:10,done:false},
+ {id:6,title:'Tend to a plant or notice something green',detail:'A little herbalist moment',xp:10,done:false},
+ {id:7,title:'Do one small thing to care for your home',detail:'Make your refuge a little cosier',xp:10,done:false}
+];
+let state=load();
+function load(){try{const x=JSON.parse(localStorage.getItem(KEY));if(x)return {...x,quests:x.quests||structuredClone(defaultQuests)}}catch(e){}return {xp:0,name:'Little Wanderer',avatar:'🧙🏻‍♀️',outfit:'🌿 Green cloak',quests:structuredClone(defaultQuests),questDate:new Date().toDateString(),plants:[],studies:[],recipes:[],journal:[]}}
+function persist(){localStorage.setItem(KEY,JSON.stringify(state));render()}
+function level(){return Math.floor(state.xp/100)+1}
+function todayReset(){const today=new Date().toDateString();if(state.questDate!==today){state.questDate=today;state.quests=state.quests.map(q=>({...q,done:false}));persist()}}
+function render(){
+ const xp=state.xp||0,lv=level(),done=state.quests.filter(q=>q.done).length;
+ document.getElementById('xp').textContent=xp;document.getElementById('level').textContent=lv;document.getElementById('topLevel').textContent='Lv. '+lv;document.getElementById('doneCount').textContent=done;
+ document.getElementById('xpBar').style.width=(xp%100)+'%';document.getElementById('nextLevel').textContent=(100-xp%100)+' XP to next level';
+ document.getElementById('charLevel').textContent=lv;document.getElementById('charXP').textContent=xp+' XP';
+ document.getElementById('roomAvatar').textContent=state.avatar;document.getElementById('avatarPreview').textContent=state.avatar;
+ document.getElementById('charName').value=state.name;document.getElementById('hair').value=state.avatar;document.getElementById('outfit').value=state.outfit;
+ document.getElementById('homeQuests').innerHTML=state.quests.slice(0,4).map(q=>questHTML(q)).join('');
+ document.getElementById('allQuests').innerHTML=state.quests.map(q=>questHTML(q)).join('');
+ document.getElementById('plantList').innerHTML=listHTML(state.plants,'🌱','No plants recorded yet.');
+ document.getElementById('studyList').innerHTML=listHTML(state.studies,'📚','Your first study session will appear here.');
+ document.getElementById('recipeList').innerHTML=listHTML(state.recipes,'🍲','Your recipe book is waiting.');
+ document.getElementById('journalList').innerHTML=listHTML(state.journal,'✒️','Your story begins with the next sentence.');
+ document.getElementById('invPlants').textContent=state.plants.length;document.getElementById('invStudy').textContent=state.studies.length;document.getElementById('invRecipes').textContent=state.recipes.length;document.getElementById('invJournal').textContent=state.journal.length;
+ document.getElementById('dateLabel').textContent=new Date().toLocaleDateString(undefined,{weekday:'short',day:'numeric',month:'short'});
+}
+function questHTML(q){return '<label class="quest '+(q.done?'done':'')+'"><input type="checkbox" '+(q.done?'checked':'')+' onchange="toggleQuest('+q.id+',this.checked)"><span class="quest-info"><b>'+esc(q.title)+'</b><small>'+esc(q.detail||'Your personal quest')+'</small></span><span class="xp">+'+q.xp+' XP</span></label>'}
+function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function listHTML(items,icon,empty){if(!items.length)return '<div class="empty">'+empty+'</div>';return items.map(x=>'<div class="item"><div><b>'+icon+' '+esc(x.title)+'</b><div class="sub">'+esc(x.note||'')+'</div></div><span class="tag">'+esc(x.date||'')+'</span></div>').join('')}
+function toggleQuest(id,checked){const q=state.quests.find(x=>x.id===id);if(!q||q.done===checked)return;q.done=checked;state.xp=Math.max(0,state.xp+(checked?q.xp:-q.xp));persist()}
+function addQuest(){const v=document.getElementById('newQuest').value.trim();if(!v)return;state.quests.push({id:Date.now(),title:v,detail:'A quest of your own making',xp:10,done:false});document.getElementById('newQuest').value='';persist()}
+function showPage(p){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById('page-'+p).classList.add('active');document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('active',x.dataset.page===p));window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('.nav').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+function saveCharacter(){state.name=document.getElementById('charName').value.trim()||'Little Wanderer';state.avatar=document.getElementById('hair').value;state.outfit=document.getElementById('outfit').value;persist();alert('Your character has been saved! 🌿')}
+function addEntry(arr,title,note,xp){if(!title.trim())return;arr.unshift({title:title.trim(),note:note.trim(),date:new Date().toLocaleDateString()});state.xp+=xp;persist()}
+function saveStudy(){addEntry(state.studies,document.getElementById('studyTopic').value,document.getElementById('studyMinutes').value+' minutes · '+document.getElementById('studyNote').value,15);document.getElementById('studyTopic').value='';document.getElementById('studyNote').value=''}
+function savePlant(){addEntry(state.plants,document.getElementById('plantName').value,document.getElementById('plantPlace').value+' · '+document.getElementById('plantNote').value,10);document.getElementById('plantName').value='';document.getElementById('plantPlace').value='';document.getElementById('plantNote').value=''}
+function saveRecipe(){addEntry(state.recipes,document.getElementById('recipeName').value,document.getElementById('recipeNote').value,10);document.getElementById('recipeName').value='';document.getElementById('recipeNote').value=''}
+function saveJournal(){const v=document.getElementById('journalText').value.trim();if(!v)return;addEntry(state.journal,new Date().toLocaleDateString(),v,0);document.getElementById('journalText').value=''}
+function exportSave(){const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='another-world-backup.json';a.click();URL.revokeObjectURL(a.href)}
+function importSave(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{state=JSON.parse(r.result);persist();alert('Your adventure has been restored!')}catch(err){alert('That backup could not be read.')}};r.readAsText(f)}
+todayReset();render();
+</script>
+</body>
+</html>
