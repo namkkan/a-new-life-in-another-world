@@ -218,8 +218,9 @@ function focusBarcelonaPlace(id){
  if(barcelonaMarkers[id])barcelonaMarkers[id].openPopup();
 }
 
-function showPage(p){if(p==='world'){initBarcelonaMap();setTimeout(()=>barcelonaMap&&barcelonaMap.invalidateSize(),150)}document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById('page-'+p).classList.add('active');document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('active',x.dataset.page===p));window.scrollTo({top:0,behavior:'smooth'})}
+function showPage(p,scroll=true){if(!document.getElementById('page-'+p))p='home';if(p==='world'){initBarcelonaMap();setTimeout(()=>barcelonaMap&&barcelonaMap.invalidateSize(),150)}document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById('page-'+p).classList.add('active');document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('active',x.dataset.page===p));try{localStorage.setItem('anotherWorldLastPage',p)}catch(e){}if(scroll)window.scrollTo({top:0,behavior:'smooth'})}
 document.querySelectorAll('.nav').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+try{const lastPage=localStorage.getItem('anotherWorldLastPage');if(lastPage&&document.getElementById('page-'+lastPage))showPage(lastPage,false)}catch(e){}
 function saveCharacter(){state.name=document.getElementById('charName').value.trim()||'Pequeña viajera';state.avatar=document.getElementById('hair').value;state.outfit=document.getElementById('outfit').value;persist();alert('¡Tu personaje se ha guardado! 🌿')}
 function addEntry(arr,title,note,xp){if(!title.trim())return;arr.unshift({title:title.trim(),note:note.trim(),date:new Date().toLocaleDateString('es-ES')});state.xp+=xp;persist()}
 function saveStudy(){addEntry(state.studies,document.getElementById('studyTopic').value,document.getElementById('studyMinutes').value+' minutos · '+document.getElementById('studyNote').value,15);document.getElementById('studyTopic').value='';document.getElementById('studyNote').value=''}
