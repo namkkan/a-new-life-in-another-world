@@ -201,7 +201,7 @@ let barcelonaMap=null,barcelonaMarkers={};
 function initBarcelonaMap(){
  if(barcelonaMap||!document.getElementById('barcelonaMap')||!window.L)return;
  barcelonaMap=L.map('barcelonaMap',{scrollWheelZoom:false}).setView([41.389,2.16],13);
- L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',subdomains:'abcd',maxZoom:19}).addTo(barcelonaMap);
+ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',maxZoom:19}).addTo(barcelonaMap);
  Object.entries(barcelonaPlaces).forEach(([id,p])=>{
   const icon=L.divIcon({className:'',html:'<div class="map-pin">'+p.symbol+'</div>',iconSize:[26,26],iconAnchor:[13,13]});
   const marker=L.marker(p.coords,{icon}).addTo(barcelonaMap).bindPopup('<b>'+p.name+'</b><br>'+p.area);
