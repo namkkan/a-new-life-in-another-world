@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+<title id="title">Mi pequeño hogar</title><desc id="desc">Una casita acogedora entre plantas bajo la lluvia nocturna, con ventanas iluminadas y un pequeño hámster amarillo.</desc>
+<defs>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#171b2b"/><stop offset="1" stop-color="#49313c"/></linearGradient>
+ <linearGradient id="wall" x2="0" y2="1"><stop stop-color="#70505a"/><stop offset="1" stop-color="#30232d"/></linearGradient>
+ <linearGradient id="roof" x2="0" y2="1"><stop stop-color="#343044"/><stop offset="1" stop-color="#171923"/></linearGradient>
+ <linearGradient id="glow" x2="0" y2="1"><stop stop-color="#ffe0a0"/><stop offset="1" stop-color="#b76b4c"/></linearGradient>
+ <radialGradient id="moon"><stop stop-color="#e5c8b2"/><stop offset="1" stop-color="#a58c9c"/></radialGradient>
+ <filter id="blur"><feGaussianBlur stdDeviation="22"/></filter>
+ <pattern id="bricks" width="90" height="38" patternUnits="userSpaceOnUse"><path d="M0 19H90M45 0V19M0 19V38M90 19V38" stroke="#a47a78" opacity=".18" fill="none"/></pattern>
+</defs>
+<rect width="1200" height="700" fill="url(#sky)"/>
+<circle cx="935" cy="112" r="70" fill="url(#moon)" opacity=".8"/><circle cx="935" cy="112" r="95" fill="#c3a2ad" opacity=".12" filter="url(#blur)"/>
+<path d="M0 390Q190 300 360 385T730 360T1200 380V700H0Z" fill="#211d2b"/>
+<g opacity=".65" fill="#252333"><path d="M80 330V190h40v140M140 330V145h55v185M210 330V215h34v115M820 350V210h45v140M875 350V170h62v180M960 350V240h40v110"/></g>
+<g fill="#f3b77e" opacity=".55"><path d="M155 190h12v18h-12zM180 190h12v18h-12zM155 230h12v18h-12zM895 210h12v18h-12zM920 210h12v18h-12z"/></g>
+<path d="M0 510Q200 440 420 500T850 480T1200 510V700H0Z" fill="#171820"/>
+<ellipse cx="620" cy="615" rx="430" ry="75" fill="#e29b73" opacity=".13" filter="url(#blur)"/>
+<!-- cottage -->
+<path d="M280 360L610 130 955 360V625H280Z" fill="url(#wall)" stroke="#1b1924" stroke-width="12"/>
+<path d="M225 375L610 95 1015 375L990 405 610 160 250 410Z" fill="url(#roof)" stroke="#171722" stroke-width="12"/>
+<path d="M250 410L610 160 990 405" fill="none" stroke="#806477" stroke-width="5" opacity=".65"/>
+<path d="M280 360L610 130 955 360V625H280Z" fill="url(#bricks)" opacity=".65"/>
+<!-- dormer -->
+<path d="M500 255L650 150 800 255V360H500Z" fill="#40303d" stroke="#211d29" stroke-width="9"/>
+<path d="M480 260L650 130 820 260L800 277 650 170 500 277Z" fill="#242331" stroke="#15151f" stroke-width="8"/>
+<rect x="580" y="230" width="140" height="125" rx="5" fill="url(#glow)" stroke="#211923" stroke-width="13"/>
+<path d="M650 235V350M585 292H715" stroke="#51313a" stroke-width="9"/>
+<!-- main windows -->
+<rect x="340" y="425" width="155" height="150" rx="8" fill="url(#glow)" stroke="#241b27" stroke-width="14"/>
+<path d="M417 430V570M347 500H488" stroke="#51313a" stroke-width="10"/>
+<rect x="765" y="420" width="145" height="155" rx="8" fill="url(#glow)" stroke="#241b27" stroke-width="14"/>
+<path d="M837 425V570M772 495H903" stroke="#51313a" stroke-width="10"/>
+<!-- door -->
+<path d="M565 430Q650 375 735 430V625H565Z" fill="#382632" stroke="#201923" stroke-width="12"/>
+<path d="M590 450Q650 410 710 450V625H590Z" fill="#513643" stroke="#9b746e" stroke-width="4"/>
+<circle cx="694" cy="530" r="7" fill="#d9ad76"/>
+<!-- porch and path -->
+<path d="M525 625H775L830 700H470Z" fill="#57404a" stroke="#231d27" stroke-width="8"/>
+<path d="M630 625L610 700M710 625L760 700" stroke="#a77a70" opacity=".4" stroke-width="4"/>
+<!-- chimney -->
+<path d="M820 115V35H885V165" fill="#493540" stroke="#171722" stroke-width="10"/><path d="M810 38H895" stroke="#9a7377" stroke-width="10"/>
+<!-- rain -->
+<g stroke="#a8a8c2" stroke-width="2" opacity=".35"><path d="M70 30l-25 70M155 80l-25 70M260 15l-25 70M370 40l-25 70M470 0l-25 70M1050 25l-25 70M1130 90l-25 70M1080 200l-25 70M100 220l-25 70M210 300l-25 70M1040 340l-25 70M1140 420l-25 70M60 450l-25 70M190 520l-25 70M960 560l-25 70M1090 600l-25 70"/></g>
+<!-- vines and foliage -->
+<g fill="none" stroke="#293d35" stroke-width="9"><path d="M300 590Q250 500 310 420Q360 360 320 300M920 600Q990 520 940 455Q900 400 960 340"/></g>
+<g fill="#435b48" stroke="#1c302a" stroke-width="3"><ellipse cx="300" cy="470" rx="20" ry="9" transform="rotate(-35 300 470)"/><ellipse cx="337" cy="420" rx="23" ry="10" transform="rotate(25 337 420)"/><ellipse cx="316" cy="355" rx="22" ry="9" transform="rotate(-25 316 355)"/><ellipse cx="950" cy="500" rx="25" ry="10" transform="rotate(30 950 500)"/><ellipse cx="930" cy="420" rx="22" ry="9" transform="rotate(-30 930 420)"/><ellipse cx="970" cy="365" rx="23" ry="10" transform="rotate(25 970 365)"/></g>
+<g fill="#a45d72"><circle cx="300" cy="390" r="8"/><circle cx="326" cy="370" r="7"/><circle cx="947" cy="455" r="8"/><circle cx="969" cy="430" r="7"/></g>
+<!-- garden pots -->
+<g><path d="M170 610h70l-10 65h-50z" fill="#754b4c"/><path d="M205 610q-35-65-5-95q35 35 5 95M205 610q20-70 55-75q0 50-55 75" fill="#55724f"/><path d="M950 620h78l-12 65h-54z" fill="#754b4c"/><path d="M990 620q-40-60-10-100q35 35 10 100M990 620q25-70 62-70q-5 50-62 70" fill="#55724f"/></g>
+<!-- warm lantern -->
+<path d="M150 435v65" stroke="#b28b72" stroke-width="5"/><path d="M132 450h36l-5 40h-26z" fill="#392a32" stroke="#c69a74" stroke-width="4"/><path d="M140 457h20v25h-20z" fill="#ffd28c"/>
+<!-- little yellow hamster Usagi -->
+<g transform="translate(1040 585)"><ellipse cx="0" cy="38" rx="55" ry="28" fill="#d7b45f"/><circle cx="-25" cy="4" r="20" fill="#e8c96e"/><circle cx="24" cy="4" r="20" fill="#e8c96e"/><circle cx="-25" cy="4" r="9" fill="#b87978"/><circle cx="24" cy="4" r="9" fill="#b87978"/><ellipse cx="0" cy="26" rx="34" ry="30" fill="#f1d77e"/><circle cx="-13" cy="18" r="5" fill="#201b20"/><circle cx="13" cy="18" r="5" fill="#201b20"/><ellipse cx="0" cy="31" rx="7" ry="5" fill="#b76f70"/><path d="M-8 42q8 8 16 0" stroke="#8a5b4f" stroke-width="3" fill="none"/></g>
+<!-- foreground grass -->
+<path d="M0 670q30-65 55 0q25-75 50 0q30-55 50 0M1080 700q25-80 50 0q20-60 45 0q25-75 50 0" fill="#304537"/>
+<rect y="680" width="1200" height="20" fill="#171820"/>
+</svg>
