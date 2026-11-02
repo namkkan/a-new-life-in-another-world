@@ -39,6 +39,7 @@ button,input,textarea,select{font:inherit}button{cursor:pointer}
 #barcelonaMap{height:520px;width:100%;border:1px solid #665052;border-radius:14px;overflow:hidden;background:#211b1e;z-index:1}
 .map-layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(230px,.75fr);gap:14px}
 .map-list{display:grid;gap:9px;align-content:start}
+.zone-dropdown{background:#211b1e;border:1px solid var(--line);border-radius:12px;padding:10px}.zone-dropdown summary{cursor:pointer;list-style:none;font:600 15px "Playfair Display";color:var(--ink);padding:3px 2px}.zone-dropdown summary::-webkit-details-marker{display:none}.zone-dropdown summary:after{content:"＋";float:right;color:var(--gold);font:14px "DM Mono"}.zone-dropdown[open] summary{padding-bottom:9px;border-bottom:1px solid var(--line);margin-bottom:9px}.zone-dropdown[open] summary:after{content:"−"}.zone-dropdown .map-place{margin:7px 0 0}
 .map-place{display:block;width:100%;text-align:left;background:#211b1e;border:1px solid var(--line);border-radius:12px;padding:12px;color:var(--ink);cursor:pointer}
 .map-place:hover,.map-place:focus{border-color:var(--gold);background:#302326}
 .map-place b{display:block;font:600 14px 'Playfair Display';margin-bottom:4px}
@@ -125,17 +126,33 @@ footer{text-align:center;color:#806d70;font:10px 'DM Mono';padding:18px}
 <h2 class="page-title">Mi ciudad · Barcelona</h2>
 <p class="page-intro">Un atlas personal para recorrer Barcelona a tu ritmo: los lugares de siempre, los rincones que te esperan y los recuerdos que iremos guardando.</p>
 <div class="panel">
- <div class="panel-head"><div><h3>Atlas de la aventurera</h3><div class="sub">Primeras zonas · Barcelona</div></div><span class="tag">5 LUGARES</span></div>
+ <div class="panel-head"><div><h3>Atlas de la aventurera</h3><div class="sub">Primeras zonas · Barcelona</div></div><span class="tag">5 MARCADORES · 6 ZONAS</span></div>
  <div class="map-layout">
   <div><div id="barcelonaMap" role="application" aria-label="Mapa ilustrado de Barcelona con tres lugares personales"></div><div class="map-note">Puedes acercar, alejar y mover el mapa. Selecciona una zona de la lista para centrarla.</div></div>
   <div class="map-list">
-   <button class="map-place" onclick="focusBarcelonaPlace('glories')"><span class="map-symbol">🌆</span><b>La Plaza de los Encuentros</b><small>El cruce de los caminos modernos</small></button>
-   <button class="map-place" onclick="focusBarcelonaPlace('geri')"><span class="map-symbol">❤️</span><b>El Refugio del Corazón</b><small>Tierras de Sants · lugar aproximado</small></button>
-    <button class="map-place" onclick="focusBarcelonaPlace('homeHorta')"><span class="map-symbol">🏡</span><b>El Refugio de la Aventurera</b><small>Carretera Antiga d’Horta · punto aproximado</small></button>
+   <details class="zone-dropdown" open><summary>🏡 Fort Pienc <small>· tu zona de refugio</small></summary>
+    <button class="map-place" onclick="focusBarcelonaPlace('homeHorta')"><span class="map-symbol">🏡</span><b>El Refugio de la Aventurera</b><small>Carretera Antiga d’Horta · tu punto de partida</small></button>
     <button class="map-place" onclick="focusBarcelonaPlace('aldiFortPienc')"><span class="map-symbol">🛒</span><b>El Mercado de las Provisiones</b><small>ALDI · Plaça del Fort Pienc</small></button>
-    <button class="map-place" onclick="focusBarcelonaPlace('primaRibes')"><span class="map-symbol">🎁</span><b>El Bazar de los Hallazgos</b><small>PrimaPrix · Carrer de Ribes, 27</small></button>
-   <div class="panel" style="padding:13px;margin:3px 0 0"><b style="font:600 14px 'Playfair Display'">Nuestro cuaderno de campo</b><p class="map-note" style="margin-bottom:0">Este es tu atlas personal. Aquí guardaremos tus lugares habituales, tiendas, cafeterías, bibliotecas, parques y rutas.</p></div>
-  </div>
+    <button class="map-place" onclick="focusBarcelonaPlace('primaRibes')"><span class="map-symbol">🎁</span><b>El Bazar de los Hallazgos</b><small>PrimaPrix · Plus Code 95VJ+WH</small></button>
+   </details>
+   <details class="zone-dropdown"><summary>🌆 Glòries</summary>
+    <button class="map-place" onclick="focusBarcelonaPlace('glories')"><span class="map-symbol">🌆</span><b>La Plaza de los Encuentros</b><small>El cruce de los caminos modernos</small></button>
+   </details>
+   <details class="zone-dropdown"><summary>🍵 Urquinaona</summary>
+    <div class="map-place"><span class="map-symbol">🥐</span><b>La Posada de las Migas</b><small>BuenasMigas · Plaça Urquinaona · ubicación pendiente de fijar</small></div>
+    <div class="map-place"><span class="map-symbol">🍵</span><b>El Santuario del Chai</b><small>Cafelunya · Plaça Urquinaona · ubicación pendiente de fijar</small></div>
+   </details>
+   <details class="zone-dropdown"><summary>❤️ Sants</summary>
+    <button class="map-place" onclick="focusBarcelonaPlace('geri')"><span class="map-symbol">❤️</span><b>El Refugio del Corazón</b><small>Tierras de Sants · lugar aproximado</small></button>
+   </details>
+   <details class="zone-dropdown"><summary>⚓ Puerto y Barceloneta</summary>
+    <div class="map-place"><span class="map-symbol">⚓</span><b>Family Art Tattoo</b><small>El Pacto de la Tinta · estudio donde te tatúa tu amiga · ubicación pendiente de fijar</small></div>
+   </details>
+   <details class="zone-dropdown"><summary>🖤 Otros lugares por ubicar</summary>
+    <div class="map-place"><span class="map-symbol">🖤</span><b>L’Embruix</b><small>Estudio de piercings · falta confirmar la dirección exacta</small></div>
+   </details>
+   <div class="panel" style="padding:13px;margin:3px 0 0"><b style="font:600 14px 'Playfair Display'">Nuestro cuaderno de campo</b><p class="map-note" style="margin-bottom:0">Cada zona tendrá su propio registro de visitas, lugares descubiertos y recuerdos. Los sitios sin marcador aparecerán aquí hasta que fijemos su posición exacta.</p></div>
+  </div>  </div>
  </div>
 </div>
 <div class="panel"><div class="panel-head"><div><h3>Próximas expediciones</h3><div class="sub">Lugares que iremos descubriendo juntas.</div></div><span class="tag">POR COMPLETAR</span></div><div class="empty">🧭 El mapa está abierto. Cada nuevo rincón tendrá su propia historia.</div></div>
@@ -220,9 +237,9 @@ function saveSetback(){const what=document.getElementById('setbackWhat').value.t
 
 
 const barcelonaPlaces={
+ homeHorta:{coords:[41.3941133,2.1801825],name:'El Refugio de la Aventurera',area:'Carretera Antiga d’Horta · ubicación aproximada en el centro del tramo',symbol:'🏡'},
  glories:{coords:[41.4036,2.1904],name:'La Plaza de los Encuentros',area:'El cruce de los caminos modernos',symbol:'🌆'},
  geri:{coords:[41.37742,2.13181],name:'El Refugio del Corazón',area:'Tierras de Sants · lugar aproximado',symbol:'❤️'},
- homeHorta:{coords:[41.3941133,2.1801825],name:'El Refugio de la Aventurera',area:'Carretera Antiga d’Horta · ubicación aproximada en el centro del tramo',symbol:'🏡'},
  aldiFortPienc:{coords:[41.3952,2.1821],name:'El Mercado de las Provisiones',area:'ALDI · Plaça del Fort Pienc, 08013 · provisiones para el refugio',symbol:'🛒'},
  primaRibes:{coords:[41.3948125,2.1814375],name:'El Bazar de los Hallazgos',area:'PrimaPrix · Plus Code 95VJ+WH, Barcelona · ubicación indicada por ti',symbol:'🎁'}
 };
