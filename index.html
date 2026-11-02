@@ -129,9 +129,9 @@ footer{text-align:center;color:#806d70;font:10px 'DM Mono';padding:18px}
 <h2 class="page-title">Mi ciudad · Barcelona</h2>
 <p class="page-intro">Un atlas personal para recorrer Barcelona a tu ritmo: los lugares de siempre, los rincones que te esperan y los recuerdos que iremos guardando.</p>
 <div class="panel">
- <div class="panel-head"><div><h3>Atlas de la aventurera</h3><div class="sub">Primeras zonas · Barcelona</div></div><span class="tag">4 MARCADORES · 6 ZONAS</span></div>
+ <div class="panel-head"><div><h3>Atlas de la aventurera</h3><div class="sub">Primeras zonas · Barcelona</div></div><span class="tag">4 MARCADORES · 7 ZONAS</span></div>
  <div class="map-layout">
-  <div><div id="barcelonaMap" role="application" aria-label="Mapa ilustrado de Barcelona con tres lugares personales"></div><div class="map-note">Explora Barcelona: selecciona un territorio para viajar hasta él. Los territorios tienen contornos dibujados a mano para el atlas; son aproximaciones visuales, no límites oficiales.<div class="map-legend"><span><i></i> Territorio explorable</span><span>📍 Lugar concreto</span><span>✦ Zona seleccionada</span></div></div></div>
+  <div><div id="barcelonaMap" role="application" aria-label="Mapa ilustrado de Barcelona con lugares personales"></div><div class="map-note">Explora Barcelona: selecciona un territorio para viajar hasta él. Los territorios tienen contornos dibujados a mano para el atlas; son aproximaciones visuales, no límites oficiales.<div class="map-legend"><span><i></i> Territorio explorable</span><span>📍 Lugar concreto</span><span>✦ Zona seleccionada</span></div></div></div>
   <div class="map-list">
    <details class="zone-dropdown" open><summary onclick="focusBarcelonaZone('fortPienc')">🏡 Fort Pienc <small>· tu zona de refugio</small></summary>
     <button class="map-place" onclick="focusBarcelonaPlace('homeHorta')"><span class="map-symbol">🏡</span><b>El Refugio de la Aventurera</b><small>Carretera Antiga d’Horta · tu punto de partida</small></button>
@@ -149,6 +149,24 @@ footer{text-align:center;color:#806d70;font:10px 'DM Mono';padding:18px}
    </details>
    <details class="zone-dropdown"><summary onclick="focusBarcelonaZone('port')">⚓ Puerto y Barceloneta</summary>
     <div class="map-place"><span class="map-symbol">⚓</span><b>Family Art Tattoo</b><small>El Pacto de la Tinta · estudio donde te tatúa tu amiga · ubicación pendiente de fijar</small></div>
+   </details>
+   <details class="zone-dropdown"><summary>🏥 Sant Pau · Passeig de Sant Joan</summary>
+    <div class="map-place"><span class="map-symbol">🏥</span><b>El Santuario de la Curación</b><small>Hospital de Sant Pau · tu hospital de referencia</small></div>
+    <div class="map-place"><span class="map-symbol">🌿</span><b>La Casa de los Sanadores</b><small>CAP Passeig de Sant Joan · tu centro de atención primaria</small></div>
+   </details>
+   <details class="zone-dropdown"><summary>📚 Bibliotecas y lugares de estudio</summary>
+    <div class="map-place"><span class="map-symbol">📚</span><b>El Archivo de las Páginas Silenciosas</b><small>Biblioteca Maria Moix · Barcelona · ubicación pendiente de fijar</small></div>
+    <div class="map-place"><span class="map-symbol">🎓</span><b>El Refugio de los Estudiosos</b><small>Biblioteca de la Universitat de Barcelona · Plaça Universitat · donde estudias a veces con tu novio</small></div>
+   </details>
+   <details class="zone-dropdown"><summary>✂️ Arte y papelería</summary>
+    <div class="map-place"><span class="map-symbol">🎀</span><b>El Bazar de los Pequeños Tesoros</b><small>Stick & Tape · papelería, pegatinas y pequeños hallazgos · ubicación pendiente de fijar</small></div>
+   </details>
+   <details class="zone-dropdown"><summary>🌊 Diagonal Mar · Fòrum</summary>
+    <div class="map-place"><span class="map-symbol">🛍️</span><b>El Gran Mercado de Cristal</b><small>Diagonal Mar · centro comercial que frecuentas</small></div>
+    <div class="map-place"><span class="map-symbol">⚓</span><b>Las Tierras del Gran Horizonte</b><small>Parc del Fòrum · zona que frecuentas</small></div>
+   </details>
+   <details class="zone-dropdown"><summary>🌊 Rutas junto al mar</summary>
+    <div class="map-place"><span class="map-symbol">🚶</span><b>El Sendero de las Mareas</b><small>Ruta a pie desde el Hospital del Mar, siguiendo las playas hasta el Hotel W</small></div>
    </details>
    <details class="zone-dropdown"><summary>🖤 Otros lugares por ubicar</summary>
     <div class="map-place"><span class="map-symbol">🖤</span><b>L’Embruix</b><small>Estudio de piercings · falta confirmar la dirección exacta</small></div>
