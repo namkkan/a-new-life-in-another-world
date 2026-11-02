@@ -376,7 +376,7 @@ function savePlant(){addEntry(state.plants,document.getElementById('plantName').
 const recipeIngredientGroups={
  '🌾 Carbohidratos':['Arroz','Pasta','Avena','Pan','Quinoa','Harina'],
  '🫘 Legumbres':['Lentejas','Garbanzos','Alubias','Guisantes','Soja'],
- '🥬 Verduras':['Cebolla','Ajo','Lechuga','Zanahoria','Boniato','Patata','Espinacas','Brócoli','Coliflor','Judías verdes'],
+ '🥬 Verduras':['Cebolla','Ajo','Lechuga','Zanahoria','Boniato','Patata','Remolacha','Espinacas','Brócoli','Coliflor','Judías verdes'],
  '🍎 Frutas':['Plátano','Pera','Manzana','Fresas','Uvas','Melocotón','Kiwi','Limón','Naranja'],
  '🥛 Lácteos':['Leche','Yogur','Kéfir','Queso','Nata'],
  '🥩 Carnes, huevos y atún':['Pollo','Pavo','Ternera','Cerdo','Huevos','Atún en lata'],
@@ -387,7 +387,7 @@ let selectedRecipeIngredients=[];
 let activeRecipeIngredient='';
 function renderIngredientPicker(){
  const picker=document.getElementById('recipeIngredientPicker');if(!picker)return;
- picker.innerHTML=Object.entries(recipeIngredientGroups).map(([group,items])=>'<div class="ingredient-group"><b>'+esc(group)+'</b><div class="ingredient-buttons">'+items.map(item=>'<button type="button" class="ingredient-chip '+(selectedRecipeIngredients.includes(item)?'selected':'')+'" onclick="toggleRecipeIngredient('+JSON.stringify(item)+')">'+esc(item)+'</button>').join('')+'</div></div>').join('');
+ picker.innerHTML=Object.entries(recipeIngredientGroups).map(([group,items])=>'<div class="ingredient-group"><b>'+esc(group)+'</b><div class="ingredient-buttons">'+items.map(item=>'<button type="button" class="ingredient-chip '+(selectedRecipeIngredients.includes(item)?'selected':'')+'" onclick="toggleRecipeIngredient(\''+item.replace(/\\/g,'\\\\').replace(/'/g,"\\'")+'\')">'+esc(item)+'</button>').join('')+'</div></div>').join('');
  const selected=document.getElementById('selectedRecipeIngredients');if(selected)selected.textContent=selectedRecipeIngredients.length?selectedRecipeIngredients.join(' · '):'Ninguno todavía';
 }
 function toggleRecipeIngredient(item){
