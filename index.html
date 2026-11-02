@@ -67,7 +67,7 @@ button,input,textarea,select{font:inherit}button{cursor:pointer}
 footer{text-align:center;color:#806d70;font:10px 'DM Mono';padding:18px}
 @media(max-width:850px){.layout{grid-template-columns:1fr}.sidebar{position:static;display:flex;overflow-x:auto;gap:3px;padding:8px}.side-label{display:none}.nav{white-space:nowrap;width:auto;padding:9px}.nav span{width:auto}.content-grid{grid-template-columns:1fr}.hero-art{font-size:75px;margin-right:0}}
 @media(max-width:560px){.app{padding:12px}.topbar{align-items:flex-start}.brand h1{font-size:18px}.top-actions .pill{display:none}.hero{padding:22px 18px}.hero-art{font-size:55px}.stats{grid-template-columns:repeat(2,1fr)}.tiles{grid-template-columns:repeat(2,1fr)}.form-row{grid-template-columns:1fr}.sidebar{margin:0 -2px}.nav{font-size:11px}.nav span{font-size:16px}}
-.recipe-book{display:grid;gap:12px}.recipe-card{background:#251e21;border:1px solid var(--line);border-radius:12px;padding:14px}.recipe-card h4{font:600 17px "Playfair Display";margin:0 0 6px}.recipe-meta{font-size:11px;color:var(--muted);margin-bottom:9px}.recipe-note{font-size:13px;line-height:1.6;color:#c9b8b2;white-space:pre-wrap}.recipe-stats{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.recipe-stat{background:#33272b;border:1px solid var(--line);border-radius:20px;padding:5px 9px;font-size:11px;color:#e6c9b9}.recipe-stars{display:flex;gap:4px;margin:10px 0}.recipe-stars button{background:transparent;border:0;padding:2px;color:#d9b77c;font-size:22px;cursor:pointer}.recipe-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.ingredient-groups{display:grid;gap:10px}.ingredient-group{border:1px solid var(--line);border-radius:10px;padding:10px}.ingredient-group b{display:block;font-size:12px;margin-bottom:8px;color:#e6c9b9}.ingredient-buttons,.ingredient-filters{display:flex;flex-wrap:wrap;gap:7px}.ingredient-chip{background:#33272b;border:1px solid var(--line);border-radius:18px;padding:7px 10px;color:#d9c9c2;font-size:11px;cursor:pointer}.ingredient-chip.selected,.ingredient-chip.active{background:#594047;border-color:#bd8d91;color:#fff}.ingredient-filters{margin:10px 0 14px}.ingredient-empty{color:var(--muted);font-size:12px;padding:8px 0}.recipe-book{display:grid;gap:12px}.recipe-card{background:#251e21;border:1px solid var(--line);border-radius:12px;padding:14px}.recipe-card h4{font:600 17px "Playfair Display";margin:0 0 6px}.recipe-meta{font-size:11px;color:var(--muted);margin-bottom:9px}.recipe-note{font-size:13px;line-height:1.6;color:#c9b8b2;white-space:pre-wrap}.recipe-stats{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.recipe-stat{background:#33272b;border:1px solid var(--line);border-radius:20px;padding:5px 9px;font-size:11px;color:#e6c9b9}.recipe-stars{display:flex;gap:4px;margin:10px 0}.recipe-stars button{background:transparent;border:0;padding:2px;color:#d9b77c;font-size:22px;cursor:pointer}.recipe-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 .treasure-open{display:block;margin-top:10px;width:100%}.treasure-details{margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}.treasure-details[hidden]{display:none}
 .treasure-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.treasure{background:#251e21;border:1px solid var(--line);border-radius:12px;padding:12px}.treasure b{display:block;font:600 14px "Playfair Display";margin-bottom:4px}.treasure small{display:block;color:var(--muted);font-size:11px;margin-bottom:7px}.treasure p{font-size:12px;line-height:1.5;margin:0;color:#c9b8b2}.treasure a{display:inline-block;margin-top:9px;color:#d5a2a0;font-size:11px;text-decoration:underline;text-underline-offset:3px}.treasure .tag{display:inline-block;margin-top:8px}@media(max-width:560px){.treasure-grid{grid-template-columns:1fr}}</style>
 </head>
@@ -173,7 +173,7 @@ footer{text-align:center;color:#806d70;font:10px 'DM Mono';padding:18px}
 <div class="panel"><div class="panel-head"><div><h3>Próximas expediciones</h3><div class="sub">Lugares que iremos descubriendo juntas.</div></div><span class="tag">POR COMPLETAR</span></div><div class="empty">🧭 El mapa está abierto. Cada nuevo rincón tendrá su propia historia.</div></div>
 </section>
 <section class="page" id="page-study"><h2 class="page-title">Los Archivos Ancestrales</h2><p class="page-intro">Un lugar tranquilo para estudiar. Anota un tema, un pequeño objetivo o lo que has aprendido hoy.</p><div class="panel"><h3>Sesión de estudio</h3><div class="field"><label>¿Qué estás estudiando?</label><input id="studyTopic" placeholder="Ej. Bibliotecas nacionales"></div><div class="form-row"><div class="field"><label>Minutos de estudio</label><input id="studyMinutes" type="number" min="1" value="25"></div><div class="field"><label>¿Qué has aprendido?</label><input id="studyNote" placeholder="Un pequeño descubrimiento..."></div></div><button class="btn" onclick="saveStudy()">Registrar sesión · +15 XP</button></div><div class="panel"><h3>Crónica de estudio</h3><div id="studyList" class="empty">Tu primera sesión de estudio aparecerá aquí.</div></div></section>
-<section class="page" id="page-kitchen"><h2 class="page-title">La Cocina de la Alquimista</h2><p class="page-intro">Un recetario de platos sencillos y reconfortantes. Sin reglas ni ingredientes prohibidos: solo ideas y descubrimientos.</p><div class="panel"><h3>Guardar una receta</h3><div class="field"><label>Nombre de la receta</label><input id="recipeName" placeholder="Verduras asadas con hierbas"></div><div class="field"><label>Ingredientes y preparación</label><textarea id="recipeNote" placeholder="Ingredientes, pasos y pequeñas variaciones..."></textarea></div><button class="btn" onclick="saveRecipe()">Guardar receta · +10 XP</button><div id="recipeSaveStatus" class="sub" role="status" aria-live="polite" style="margin-top:10px;min-height:18px"></div></div><div class="panel"><div class="panel-head"><div><h3>Libro de recetas</h3><div class="sub">Valora tus platos y registra cada vez que los prepares o disfrutes.</div></div></div><div id="recipeList" class="recipe-book"></div></div></section>
+<section class="page" id="page-kitchen"><h2 class="page-title">La Cocina de la Alquimista</h2><p class="page-intro">Un recetario de platos sencillos y reconfortantes. Sin reglas ni ingredientes prohibidos: solo ideas y descubrimientos.</p><div class="panel"><h3>Guardar una receta</h3><div class="field"><label>Nombre de la receta</label><input id="recipeName" placeholder="Verduras asadas con hierbas"></div><div class="field"><label>Ingredientes de la receta</label><p class="sub">Pulsa todos los ingredientes que lleve tu plato. Puedes elegir varios.</p><div id="recipeIngredientPicker" class="ingredient-groups"></div><div class="form-row" style="margin-top:10px"><input id="customRecipeIngredient" placeholder="Añadir otro ingrediente..."><button class="btn secondary" type="button" onclick="addCustomRecipeIngredient()">+ Añadir</button></div><div class="sub" style="margin-top:8px">Seleccionados: <span id="selectedRecipeIngredients">Ninguno todavía</span></div></div><div class="field"><label>Preparación y notas</label><textarea id="recipeNote" placeholder="Pasos, cantidades y pequeñas variaciones..."></textarea></div><button class="btn" onclick="saveRecipe()">Guardar receta · +10 XP</button><div id="recipeSaveStatus" class="sub" role="status" aria-live="polite" style="margin-top:10px;min-height:18px"></div></div><div class="panel"><div class="panel-head"><div><h3>🥕 Recetas por ingredientes</h3><div class="sub">Elige un ingrediente para encontrar platos que lo contengan.</div></div></div><div id="recipeIngredientFilters" class="ingredient-filters"></div><div id="recipeList" class="recipe-book"></div></div><div class="panel"><div class="panel-head"><div><h3>⭐ Ranking de recetas</h3><div class="sub">Tus platos favoritos, ordenados por puntuación.</div></div></div><div id="recipeRankingList" class="recipe-book"></div></div></section>
 <section class="page" id="page-xp-history"><h2 class="page-title">Crónica de experiencia</h2><p class="page-intro">El registro de cada misión, hábito y pequeño logro que te ha concedido experiencia.</p><div class="panel"><div class="panel-head"><div><h3>📜 Historial de XP</h3><div class="sub">Los movimientos aparecerán aquí en orden, del más reciente al más antiguo.</div></div><span class="tag" id="xpHistoryCount">0 REGISTROS</span></div><div id="xpHistoryList"></div></div><button class="btn secondary" onclick="showPage('home')">← Volver al refugio</button></section>
 <section class="page" id="page-journal"><h2 class="page-title">Diario personal</h2><p class="page-intro">Un rincón privado para dejar una nota sobre tu día. No tiene que ser bonito ni productivo.</p><div class="panel"><h3>La página de hoy</h3><div class="field"><label>¿Qué ha pasado hoy?</label><textarea id="journalText" placeholder="Hoy me he dado cuenta de..."></textarea></div><button class="btn" onclick="saveJournal()">Guardar la página de hoy</button></div><div class="panel"><h3>Páginas anteriores</h3><div id="journalList" class="empty">Tu historia empieza con la siguiente frase.</div></div></section>
 <section class="page" id="page-inventory"><h2 class="page-title">Tu inventario</h2><p class="page-intro">Pequeños tesoros que reúnes durante el camino. Este espacio se convertirá en una colección de descubrimientos y recuerdos.</p><div class="panel"><h3>Bolsa de aventurera</h3><div class="item"><span>🌱 Descubrimientos botánicos</span><b id="invPlants">0</b></div><div class="item"><span>📚 Sesiones de estudio</span><b id="invStudy">0</b></div><div class="item"><span>🍲 Recetas guardadas</span><b id="invRecipes">0</b></div><div class="item"><span>✒️ Páginas del diario</span><b id="invJournal">0</b></div></div><div class="panel"><div class="panel-head"><div><h3>Catálogo de tesoros</h3><div class="sub">Tus objetos, recuerdos y pequeños tesoros personales.</div></div><button class="btn" onclick="showPage('treasures')">🎒 Abrir catálogo completo →</button></div></div><div class="panel"><h3>Guardar tu progreso</h3><p class="sub" style="line-height:1.7">Tu aventura is saved in this browser on this device. Export a backup now and then so you can keep your progress safe.</p><button class="btn" onclick="exportSave()">Descargar copia de seguridad</button> <button class="btn secondary" onclick="document.getElementById('importFile').click()">Importar copia de seguridad</button><input id="importFile" type="file" accept="application/json" hidden onchange="importSave(event)"></div></section>
@@ -366,38 +366,86 @@ function focusBarcelonaPlace(id){
  barcelonaMap.setView(p.coords,16,{animate:true});if(barcelonaMarkers[id])barcelonaMarkers[id].openPopup();
 }
 
-function showPage(p,scroll=true){if(!document.getElementById('page-'+p))p='home';if(p==='world'){initBarcelonaMap();setTimeout(()=>barcelonaMap&&barcelonaMap.invalidateSize(),150)}if(p==='kitchen'&&typeof renderRecipeBook==='function')renderRecipeBook();if(p==='treasures'&&typeof renderTreasures==='function')renderTreasures();if(p==='xp-history'&&typeof renderXPHistory==='function')renderXPHistory();document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById('page-'+p).classList.add('active');document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('active',x.dataset.page===p));try{localStorage.setItem('anotherWorldLastPage',p)}catch(e){}if(scroll)window.scrollTo({top:0,behavior:'smooth'})}
+function showPage(p,scroll=true){if(!document.getElementById('page-'+p))p='home';if(p==='world'){initBarcelonaMap();setTimeout(()=>barcelonaMap&&barcelonaMap.invalidateSize(),150)}if(p==='kitchen'&&typeof renderRecipeBook==='function'){renderIngredientPicker();renderRecipeBook();}if(p==='treasures'&&typeof renderTreasures==='function')renderTreasures();if(p==='xp-history'&&typeof renderXPHistory==='function')renderXPHistory();document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById('page-'+p).classList.add('active');document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('active',x.dataset.page===p));try{localStorage.setItem('anotherWorldLastPage',p)}catch(e){}if(scroll)window.scrollTo({top:0,behavior:'smooth'})}
 document.querySelectorAll('.nav').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
 try{const lastPage=localStorage.getItem('anotherWorldLastPage');if(lastPage&&document.getElementById('page-'+lastPage))showPage(lastPage,false)}catch(e){}
 function saveCharacter(){state.name=document.getElementById('charName').value.trim()||'Pequeña viajera';state.avatar=document.getElementById('hair').value;state.outfit=document.getElementById('outfit').value;persist();alert('¡Tu personaje se ha guardado! 🌿')}
 function addEntry(arr,title,note,xp){if(!title.trim())return;arr.unshift({title:title.trim(),note:note.trim(),date:new Date().toLocaleDateString('es-ES')});gainXP(Number(xp)||0,title);persist()}
 function saveStudy(){addEntry(state.studies,document.getElementById('studyTopic').value,document.getElementById('studyMinutes').value+' minutos · '+document.getElementById('studyNote').value,15);document.getElementById('studyTopic').value='';document.getElementById('studyNote').value=''}
 function savePlant(){addEntry(state.plants,document.getElementById('plantName').value,document.getElementById('plantPlace').value+' · '+document.getElementById('plantNote').value,10);document.getElementById('plantName').value='';document.getElementById('plantPlace').value='';document.getElementById('plantNote').value=''}
+const recipeIngredientGroups={
+ '🥬 Verduras':['Tomate','Patata','Cebolla','Ajo','Zanahoria','Calabacín','Berenjena','Pimiento','Espinacas','Lechuga','Brócoli','Champiñones'],
+ '🍎 Frutas':['Manzana','Plátano','Naranja','Limón','Fresa','Aguacate','Melocotón','Pera'],
+ '🥩 Carnes y huevos':['Pollo','Pavo','Ternera','Cerdo','Huevos'],
+ '🐟 Pescados y mariscos':['Salmón','Atún','Merluza','Bacalao','Gambas','Mejillones'],
+ '🫘 Legumbres':['Lentejas','Garbanzos','Alubias','Guisantes','Soja'],
+ '🌾 Cereales y harinas':['Arroz','Pasta','Avena','Pan','Cuscús','Quinoa','Harina'],
+ '🥛 Lácteos':['Leche','Yogur','Kéfir','Queso','Nata'],
+ '🥜 Frutos secos y semillas':['Almendras','Nueces','Avellanas','Pipas','Chía','Sésamo'],
+ '🧂 Otros':['Aceite de oliva','Mantequilla','Miel','Chocolate','Canela','Hierbas aromáticas']
+};
+let selectedRecipeIngredients=[];
+let activeRecipeIngredient='';
+function renderIngredientPicker(){
+ const picker=document.getElementById('recipeIngredientPicker');if(!picker)return;
+ picker.innerHTML=Object.entries(recipeIngredientGroups).map(([group,items])=>'<div class="ingredient-group"><b>'+esc(group)+'</b><div class="ingredient-buttons">'+items.map(item=>'<button type="button" class="ingredient-chip '+(selectedRecipeIngredients.includes(item)?'selected':'')+'" onclick="toggleRecipeIngredient('+JSON.stringify(item)+')">'+esc(item)+'</button>').join('')+'</div></div>').join('');
+ const selected=document.getElementById('selectedRecipeIngredients');if(selected)selected.textContent=selectedRecipeIngredients.length?selectedRecipeIngredients.join(' · '):'Ninguno todavía';
+}
+function toggleRecipeIngredient(item){
+ selectedRecipeIngredients=selectedRecipeIngredients.includes(item)?selectedRecipeIngredients.filter(x=>x!==item):[...selectedRecipeIngredients,item];renderIngredientPicker();
+}
+function addCustomRecipeIngredient(){
+ const input=document.getElementById('customRecipeIngredient');const item=input.value.trim();if(!item)return;
+ if(!selectedRecipeIngredients.some(x=>x.toLocaleLowerCase()===item.toLocaleLowerCase()))selectedRecipeIngredients.push(item);
+ input.value='';renderIngredientPicker();
+}
 function saveRecipe(){
  const title=document.getElementById('recipeName').value.trim();
  const note=document.getElementById('recipeNote').value.trim();
  const status=document.getElementById('recipeSaveStatus');
  if(!title){if(status)status.textContent='Escribe primero el nombre de la receta.';return}
  if(!Array.isArray(state.recipes))state.recipes=[];
- const recipe={id:'recipe-'+Date.now()+'-'+Math.random().toString(36).slice(2,7),title,note,date:new Date().toLocaleDateString('es-ES'),rating:0,timesEaten:0,preparedDates:[]};
- const previousXP=Number(state.xp)||0;
- const previousHistory=Array.isArray(state.xpHistory)?state.xpHistory.slice():[];
- state.recipes.unshift(recipe);
- gainXP(10,'Guardar receta: '+title);
+ const recipe={id:'recipe-'+Date.now()+'-'+Math.random().toString(36).slice(2,7),title,note,ingredients:selectedRecipeIngredients.slice(),date:new Date().toLocaleDateString('es-ES'),rating:0,timesEaten:0,preparedDates:[]};
+ const previousXP=Number(state.xp)||0;const previousHistory=Array.isArray(state.xpHistory)?state.xpHistory.slice():[];
+ state.recipes.unshift(recipe);gainXP(10,'Guardar receta: '+title);
  try{
   localStorage.setItem(KEY,JSON.stringify(state));
-  document.getElementById('recipeName').value='';
-  document.getElementById('recipeNote').value='';
-  renderRecipeBook();
+  document.getElementById('recipeName').value='';document.getElementById('recipeNote').value='';selectedRecipeIngredients=[];
+  renderIngredientPicker();renderRecipeBook();
   const count=document.getElementById('invRecipes');if(count)count.textContent=state.recipes.length;
   if(status)status.textContent='✓ «'+title+'» está guardada en tu libro. Has ganado 10 XP.';
  }catch(error){
-  state.recipes=state.recipes.filter(r=>r.id!==recipe.id);
-  state.xp=previousXP;state.xpHistory=previousHistory;
+  state.recipes=state.recipes.filter(r=>r.id!==recipe.id);state.xp=previousXP;state.xpHistory=previousHistory;
   if(status)status.textContent='No se ha podido guardar. No se han sumado XP. Revisa el almacenamiento del navegador.';
   console.error('Error al guardar receta:',error);
  }
 }
+function recipeCardHTML(r,i){
+ const id=String(r.id||i);const rating=Math.max(0,Math.min(5,Number(r.rating)||0));const count=Number(r.timesEaten)||0;
+ const ingredients=Array.isArray(r.ingredients)?r.ingredients:[];
+ return '<article class="recipe-card"><h4>🍲 '+esc(r.title||'Receta sin nombre')+'</h4><div class="recipe-meta">Añadida el '+esc(r.date||'fecha desconocida')+'</div>'+(ingredients.length?'<div class="recipe-meta">🥕 '+ingredients.map(esc).join(' · ')+'</div>':'')+'<div class="recipe-note">'+esc(r.note||'Sin preparación anotada todavía.')+'</div><div class="recipe-stats"><span class="recipe-stat">⭐ '+(rating?rating+'/5':'Sin valorar')+'</span><span class="recipe-stat">🍽️ '+count+' '+(count===1?'vez':'veces')+'</span></div><div class="sub">¿Cuánto te gusta esta receta?</div><div class="recipe-stars">'+[1,2,3,4,5].map(n=>'<button aria-label="Valorar '+n+' de 5" title="'+n+'/5" onclick="rateRecipe(\''+id+'\','+n+')">'+(n<=rating?'★':'☆')+'</button>').join('')+'</div><div class="recipe-actions"><button class="btn" onclick="eatRecipe(\''+id+'\')">🍽️ La he preparado / tomado</button><button class="btn secondary" onclick="editRecipe(\''+id+'\')">Editar</button><button class="btn secondary" onclick="removeRecipe(\''+id+'\')">Eliminar</button></div></article>';
+}
+function renderRecipeBook(){
+ const list=document.getElementById('recipeList');const filters=document.getElementById('recipeIngredientFilters');const ranking=document.getElementById('recipeRankingList');
+ if(!list)return;
+ const allIngredients=[...new Set(state.recipes.flatMap(r=>Array.isArray(r.ingredients)?r.ingredients:[]))].sort((a,b)=>a.localeCompare(b,'es'));
+ if(filters)filters.innerHTML='<button class="ingredient-chip '+(!activeRecipeIngredient?'active':'')+'" onclick="setRecipeIngredientFilter(\'\')">Todos</button>'+allIngredients.map(x=>'<button class="ingredient-chip '+(activeRecipeIngredient===x?'active':'')+'" onclick="setRecipeIngredientFilter('+JSON.stringify(x)+')">'+esc(x)+'</button>').join('');
+ const matching=state.recipes.filter(r=>!activeRecipeIngredient||(Array.isArray(r.ingredients)&&r.ingredients.includes(activeRecipeIngredient)));
+ list.innerHTML=matching.length?matching.map(recipeCardHTML).join(''):'<div class="empty">'+(state.recipes.length?'No hay recetas con ese ingrediente todavía.':'Tu primera receta encontrará aquí su lugar.')+'</div>';
+ const sorted=state.recipes.slice().sort((a,b)=>(Number(b.rating)||0)-(Number(a.rating)||0)||(Number(b.timesEaten)||0)-(Number(a.timesEaten)||0));
+ if(ranking)ranking.innerHTML=sorted.length?sorted.map((r,i)=>'<div class="recipe-rank"><span class="recipe-rank-number">#'+(i+1)+'</span>'+recipeCardHTML(r,i)+'</div>').join(''):'<div class="empty">Cuando guardes y valores tus recetas, aparecerán aquí tus favoritas.</div>';
+}
+function setRecipeIngredientFilter(item){activeRecipeIngredient=item;renderRecipeBook()}
+function findRecipe(id){return state.recipes.find((r,i)=>String(r.id||i)===String(id))}
+function rateRecipe(id,rating){const r=findRecipe(id);if(!r)return;r.rating=rating;persist()}
+function eatRecipe(id){const r=findRecipe(id);if(!r)return;r.timesEaten=(Number(r.timesEaten)||0)+1;r.preparedDates=r.preparedDates||[];r.preparedDates.push(new Date().toLocaleDateString('es-ES'));persist()}
+function editRecipe(id){
+ const r=findRecipe(id);if(!r)return;const title=prompt('Nombre de la receta:',r.title||'');if(title===null)return;if(!title.trim()){alert('El nombre no puede quedar vacío.');return}
+ const ingredients=prompt('Ingredientes separados por comas:',(r.ingredients||[]).join(', '));if(ingredients===null)return;
+ const note=prompt('Preparación y notas:',r.note||'');if(note===null)return;r.title=title.trim();r.ingredients=ingredients.split(',').map(x=>x.trim()).filter(Boolean);r.note=note;persist();
+}
+function removeRecipe(id){const r=findRecipe(id);if(!r||!confirm('¿Eliminar «'+r.title+'» del libro de recetas?'))return;state.recipes=state.recipes.filter(x=>x!==r);persist()}
+
 function renderXPHistory(){
  const list=document.getElementById('xpHistoryList');if(!list)return;
  const entries=Array.isArray(state.xpHistory)?state.xpHistory:[];
