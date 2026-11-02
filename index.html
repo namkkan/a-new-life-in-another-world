@@ -173,7 +173,16 @@ footer{text-align:center;color:#806d70;font:10px 'DM Mono';padding:18px}
 <section class="page" id="page-study"><h2 class="page-title">Los Archivos Ancestrales</h2><p class="page-intro">Un lugar tranquilo para estudiar. Anota un tema, un pequeño objetivo o lo que has aprendido hoy.</p><div class="panel"><h3>Sesión de estudio</h3><div class="field"><label>¿Qué estás estudiando?</label><input id="studyTopic" placeholder="Ej. Bibliotecas nacionales"></div><div class="form-row"><div class="field"><label>Minutos de estudio</label><input id="studyMinutes" type="number" min="1" value="25"></div><div class="field"><label>¿Qué has aprendido?</label><input id="studyNote" placeholder="Un pequeño descubrimiento..."></div></div><button class="btn" onclick="saveStudy()">Registrar sesión · +15 XP</button></div><div class="panel"><h3>Crónica de estudio</h3><div id="studyList" class="empty">Tu primera sesión de estudio aparecerá aquí.</div></div></section>
 <section class="page" id="page-kitchen"><h2 class="page-title">La Cocina de la Alquimista</h2><p class="page-intro">Un recetario de platos sencillos y reconfortantes. Sin reglas ni ingredientes prohibidos: solo ideas y descubrimientos.</p><div class="panel"><h3>Guardar una receta</h3><div class="field"><label>Nombre de la receta</label><input id="recipeName" placeholder="Verduras asadas con hierbas"></div><div class="field"><label>Ingredientes y preparación</label><textarea id="recipeNote" placeholder="Ingredientes, pasos y pequeñas variaciones..."></textarea></div><button class="btn" onclick="saveRecipe()">Guardar receta · +10 XP</button></div><div class="panel"><h3>Libro de recetas</h3><div id="recipeList" class="empty">Tu primera receta encontrará aquí su lugar.</div></div></section>
 <section class="page" id="page-journal"><h2 class="page-title">Diario personal</h2><p class="page-intro">Un rincón privado para dejar una nota sobre tu día. No tiene que ser bonito ni productivo.</p><div class="panel"><h3>La página de hoy</h3><div class="field"><label>¿Qué ha pasado hoy?</label><textarea id="journalText" placeholder="Hoy me he dado cuenta de..."></textarea></div><button class="btn" onclick="saveJournal()">Guardar la página de hoy</button></div><div class="panel"><h3>Páginas anteriores</h3><div id="journalList" class="empty">Tu historia empieza con la siguiente frase.</div></div></section>
-<section class="page" id="page-inventory"><h2 class="page-title">Tu inventario</h2><p class="page-intro">Pequeños tesoros que reúnes durante el camino. Este espacio se convertirá en una colección de descubrimientos y recuerdos.</p><div class="panel"><h3>Bolsa de aventurera</h3><div class="item"><span>🌱 Descubrimientos botánicos</span><b id="invPlants">0</b></div><div class="item"><span>📚 Sesiones de estudio</span><b id="invStudy">0</b></div><div class="item"><span>🍲 Recetas guardadas</span><b id="invRecipes">0</b></div><div class="item"><span>✒️ Páginas del diario</span><b id="invJournal">0</b></div></div><div class="panel"><div class="panel-head"><div><h3>Catálogo de tesoros</h3><div class="sub">Objetos reales, recuerdos y herramientas de tu aventura.</div></div><span class="tag">10 TESOROS</span></div><div class="treasure-grid" id="treasureList"></div></div><div class="panel"><h3>Guardar tu progreso</h3><p class="sub" style="line-height:1.7">Tu aventura is saved in this browser on this device. Export a backup now and then so you can keep your progress safe.</p><button class="btn" onclick="exportSave()">Descargar copia de seguridad</button> <button class="btn secondary" onclick="document.getElementById('importFile').click()">Importar copia de seguridad</button><input id="importFile" type="file" accept="application/json" hidden onchange="importSave(event)"></div></section>
+<section class="page" id="page-inventory"><h2 class="page-title">Tu inventario</h2><p class="page-intro">Pequeños tesoros que reúnes durante el camino. Este espacio se convertirá en una colección de descubrimientos y recuerdos.</p><div class="panel"><h3>Bolsa de aventurera</h3><div class="item"><span>🌱 Descubrimientos botánicos</span><b id="invPlants">0</b></div><div class="item"><span>📚 Sesiones de estudio</span><b id="invStudy">0</b></div><div class="item"><span>🍲 Recetas guardadas</span><b id="invRecipes">0</b></div><div class="item"><span>✒️ Páginas del diario</span><b id="invJournal">0</b></div></div><div class="panel"><div class="panel-head"><div><h3>Catálogo de tesoros</h3><div class="sub">Tus objetos, recuerdos y pequeños tesoros personales.</div></div><span class="tag" id="treasureCount">10 TESOROS</span></div><div class="treasure-grid" id="treasureList"></div></div>
+<div class="panel" id="treasureEditor"><h3 id="treasureFormTitle">✨ Añadir un tesoro</h3><p class="sub">Crea una ficha para cualquier objeto que quieras guardar en tu colección.</p>
+<div class="form-grid">
+<div class="field"><label>Nombre fantástico</label><input id="treasureName" placeholder="Ej. El Guardián de los Recuerdos"></div>
+<div class="field"><label>Icono / emoji</label><input id="treasureIcon" placeholder="💎" maxlength="8"></div>
+<div class="field"><label>Objeto real</label><input id="treasureReal" placeholder="Ej. Una cámara analógica"></div>
+<div class="field"><label>Categoría</label><input id="treasureCategory" placeholder="Ej. Herramientas de la exploradora"></div>
+<div class="field" style="grid-column:1/-1"><label>Descripción</label><textarea id="treasureNote" rows="3" placeholder="¿Qué lo hace especial?"></textarea></div>
+<div class="field" style="grid-column:1/-1"><label>Enlace (opcional)</label><input id="treasureUrl" placeholder="https://..."></div>
+</div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px"><button class="btn" onclick="saveTreasure()">Guardar tesoro</button><button class="btn secondary" id="cancelTreasureEdit" onclick="cancelTreasureEdit()" style="display:none">Cancelar edición</button></div></div><div class="panel"><h3>Guardar tu progreso</h3><p class="sub" style="line-height:1.7">Tu aventura is saved in this browser on this device. Export a backup now and then so you can keep your progress safe.</p><button class="btn" onclick="exportSave()">Descargar copia de seguridad</button> <button class="btn secondary" onclick="document.getElementById('importFile').click()">Importar copia de seguridad</button><input id="importFile" type="file" accept="application/json" hidden onchange="importSave(event)"></div></section>
 </main>
 </div>
 <footer>HECHO DE PEQUEÑOS PASOS · SIN PRISAS · DESCANSAR NO TIENE CASTIGO</footer>
@@ -198,7 +207,7 @@ function load(){try{const x=JSON.parse(localStorage.getItem(KEY));if(x)return {.
 function persist(){state.xp=Math.max(0,Number(state.xp)||0);localStorage.setItem(KEY,JSON.stringify(state));render()}
 function level(){let lv=1,remaining=Math.max(0,Number(state.xp)||0);while(remaining>=xpForNextLevel(lv)){remaining-=xpForNextLevel(lv);lv++}return lv}
 function todayReset(){const today=new Date().toDateString();if(state.questDate!==today){state.questDate=today;state.quests=state.quests.map(q=>({...q,done:false}));persist()}}
-const treasures=[
+const defaultTreasures=[
  {name:'Las Llamas de la Serenidad',real:'Colección de velas aromáticas',category:'Rincón de belleza',note:'Pequeñas llamas que transforman el refugio y acompañan los momentos de calma.',icon:'🕯️'},
  {name:'El Portal de Bolsillo',real:'Teléfono móvil',category:'Herramientas del mundo moderno',note:'Un portal de comunicación y entretenimiento que la aventurera aprende a utilizar con moderación para recuperar tiempo para sí misma.',icon:'📱'},
  {name:'La Máquina del Saber',real:'Ordenador',category:'Herramientas del mundo moderno',note:'Instrumento de estudio, trabajo, investigación y programación.',icon:'💻'},
@@ -210,6 +219,9 @@ const treasures=[
  {name:'El Orbe Inseparable',real:'Anillo Vivienne Westwood Westminster · plateado',category:'Tesoros y recuerdos',note:'Un anillo inseparable de su portadora, un símbolo personal que nunca abandona su mano.',icon:'💍',url:'https://www.zalando.es/vivienne-westwood-westminster-unisex-anillo-silver-coloured-vw954l05v-d11.html?ssku=VW954L05V-D11000M000&amp;lang=es'},
  {name:'Los Ojos de la Claridad',real:'Gafas graduadas',category:'Equipo de la erudita',note:'Un instrumento esencial para observar el mundo con mayor claridad y leer cómodamente.',icon:'👓'}
 ];
+state.treasures=Array.isArray(state.treasures)?state.treasures:structuredClone(defaultTreasures);
+let editingTreasureId=null;
+
 function render(){
  const xp=state.xp||0,lv=level(),levelStart=xpAtLevelStart(lv),needed=xpForNextLevel(lv),within=xp-levelStart,done=state.quests.filter(q=>q.done).length;
  document.getElementById('xp').textContent=xp;document.getElementById('level').textContent=lv;document.getElementById('topLevel').textContent='Nivel '+lv;document.getElementById('doneCount').textContent=done;
@@ -227,10 +239,40 @@ function render(){
  document.getElementById('studyList').innerHTML=listHTML(state.studies,'📚','Tu primera sesión de estudio aparecerá aquí.');
  document.getElementById('recipeList').innerHTML=listHTML(state.recipes,'🍲','Tu recetario está esperando.');
  document.getElementById('journalList').innerHTML=listHTML(state.journal,'✒️','Tu historia empieza con la siguiente frase.');
- document.getElementById('treasureList').innerHTML=treasures.map(t=>'<article class="treasure"><b>'+t.icon+' '+t.name+'</b><small>'+t.real+' · '+t.category+'</small><p>'+t.note+'</p>'+(t.url?'<a href="'+t.url+'" target="_blank" rel="noopener noreferrer">Ver el anillo original ↗</a>':'')+'<span class="tag">En posesión</span></article>').join('');
+ renderTreasures();
  document.getElementById('invPlants').textContent=state.plants.length;document.getElementById('invStudy').textContent=state.studies.length;document.getElementById('invRecipes').textContent=state.recipes.length;document.getElementById('invJournal').textContent=state.journal.length;
  document.getElementById('dateLabel').textContent=new Date().toLocaleDateString('es-ES',{weekday:'short',day:'numeric',month:'short'});
 }
+
+function renderTreasures(){
+ document.getElementById('treasureCount').textContent=state.treasures.length+' TESOROS';
+ document.getElementById('treasureList').innerHTML=state.treasures.length?state.treasures.map(t=>'<article class="treasure"><b>'+esc(t.icon||'💎')+' '+esc(t.name)+'</b><small>'+esc(t.real||'Objeto personal')+' · '+esc(t.category||'Sin categoría')+'</small><p>'+esc(t.note||'')+'</p>'+(t.url?'<a href="'+esc(t.url)+'" target="_blank" rel="noopener noreferrer">Abrir enlace ↗</a>':'')+'<div style="display:flex;gap:7px;margin-top:10px"><button class="btn secondary" onclick="editTreasure(\''+t.id+'\')">Editar</button><button class="btn secondary" onclick="deleteTreasure(\''+t.id+'\')">Retirar</button></div><span class="tag">En posesión</span></article>').join(''):'<div class="empty">Tu colección está esperando su primer tesoro. ✨</div>';
+}
+function saveTreasure(){
+ const name=document.getElementById('treasureName').value.trim();if(!name){alert('Ponle un nombre a tu tesoro.');return}
+ const item={id:editingTreasureId||String(Date.now()),name,icon:document.getElementById('treasureIcon').value.trim()||'💎',real:document.getElementById('treasureReal').value.trim(),category:document.getElementById('treasureCategory').value.trim(),note:document.getElementById('treasureNote').value.trim(),url:document.getElementById('treasureUrl').value.trim()};
+ if(item.url&&!/^https?:\/\//i.test(item.url)){alert('El enlace debe empezar por http:// o https://');return}
+ if(editingTreasureId){const i=state.treasures.findIndex(t=>t.id===editingTreasureId);if(i>=0)state.treasures[i]=item}else state.treasures.unshift(item);
+ cancelTreasureEdit();persist();
+}
+function editTreasure(id){
+ const t=state.treasures.find(x=>x.id===id);if(!t)return;editingTreasureId=id;
+ document.getElementById('treasureFormTitle').textContent='🖋️ Editar tesoro';
+ document.getElementById('treasureName').value=t.name||'';document.getElementById('treasureIcon').value=t.icon||'';
+ document.getElementById('treasureReal').value=t.real||'';document.getElementById('treasureCategory').value=t.category||'';
+ document.getElementById('treasureNote').value=t.note||'';document.getElementById('treasureUrl').value=t.url||'';
+ document.getElementById('cancelTreasureEdit').style.display='inline-flex';document.getElementById('treasureEditor').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function cancelTreasureEdit(){
+ editingTreasureId=null;document.getElementById('treasureFormTitle').textContent='✨ Añadir un tesoro';
+ ['treasureName','treasureIcon','treasureReal','treasureCategory','treasureNote','treasureUrl'].forEach(id=>document.getElementById(id).value='');
+ document.getElementById('cancelTreasureEdit').style.display='none';
+}
+function deleteTreasure(id){
+ const t=state.treasures.find(x=>x.id===id);if(!t||!confirm('¿Quieres retirar «'+t.name+'» de tu inventario?'))return;
+ state.treasures=state.treasures.filter(x=>x.id!==id);persist();
+}
+
 function questHTML(q){return '<label class="quest '+(q.done?'done':'')+'"><input type="checkbox" '+(q.done?'checked':'')+' onchange="toggleQuest('+q.id+',this.checked)"><span class="quest-info"><b>'+esc(q.title)+'</b><small>'+esc(q.detail||'Tu misión personal')+'</small></span><span class="xp">+'+q.xp+' XP</span></label>'}
 function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function listHTML(items,icon,empty){if(!items.length)return '<div class="empty">'+empty+'</div>';return items.map(x=>'<div class="item"><div><b>'+icon+' '+esc(x.title)+'</b><div class="sub">'+esc(x.note||'')+'</div></div><span class="tag">'+esc(x.date||'')+'</span></div>').join('')}
