@@ -131,7 +131,7 @@ footer{text-align:center;color:#806d70;font:10px 'DM Mono';padding:18px}
 <div class="panel">
  <div class="panel-head"><div><h3>Atlas de la aventurera</h3><div class="sub">Primeras zonas · Barcelona</div></div><span class="tag">4 MARCADORES · 6 ZONAS</span></div>
  <div class="map-layout">
-  <div><div id="barcelonaMap" role="application" aria-label="Mapa ilustrado de Barcelona con tres lugares personales"></div><div class="map-note">Explora Barcelona: selecciona un territorio para viajar hasta él. Las áreas son límites ilustrativos del atlas, no fronteras administrativas exactas.<div class="map-legend"><span><i></i> Territorio explorable</span><span>📍 Lugar concreto</span><span>✦ Zona seleccionada</span></div></div></div>
+  <div><div id="barcelonaMap" role="application" aria-label="Mapa ilustrado de Barcelona con tres lugares personales"></div><div class="map-note">Explora Barcelona: selecciona un territorio para viajar hasta él. Los territorios tienen contornos dibujados a mano para el atlas; son aproximaciones visuales, no límites oficiales.<div class="map-legend"><span><i></i> Territorio explorable</span><span>📍 Lugar concreto</span><span>✦ Zona seleccionada</span></div></div></div>
   <div class="map-list">
    <details class="zone-dropdown" open><summary onclick="focusBarcelonaZone('fortPienc')">🏡 Fort Pienc <small>· tu zona de refugio</small></summary>
     <button class="map-place" onclick="focusBarcelonaPlace('homeHorta')"><span class="map-symbol">🏡</span><b>El Refugio de la Aventurera</b><small>Carretera Antiga d’Horta · tu punto de partida</small></button>
@@ -245,11 +245,11 @@ const barcelonaPlaces={
  aldiFortPienc:{coords:[41.3952,2.1821],name:'El Mercado de las Provisiones',area:'ALDI · Plaça del Fort Pienc, 08013 · provisiones para el refugio',symbol:'🛒'},
 };
 const barcelonaZones={
- fortPienc:{name:"Fort Pienc",label:"🏡 Fort Pienc",coords:[[41.3915,2.1745],[41.3915,2.1875],[41.3998,2.1875],[41.3998,2.1745]]},
- glories:{name:"Glòries",label:"🌆 Glòries",coords:[[41.3998,2.184],[41.3998,2.197],[41.4075,2.197],[41.4075,2.184]]},
- urquinaona:{name:"Urquinaona",label:"🍵 Urquinaona",coords:[[41.3865,2.168],[41.3865,2.1805],[41.3935,2.1805],[41.3935,2.168]]},
- sants:{name:"Sants",label:"❤️ Sants",coords:[[41.369,2.126],[41.369,2.145],[41.3835,2.145],[41.3835,2.126]]},
- port:{name:"Puerto y Barceloneta",label:"⚓ Puerto y Barceloneta",coords:[[41.375,2.183],[41.375,2.202],[41.3895,2.202],[41.3895,2.183]]}
+ fortPienc:{name:"Fort Pienc",label:"🏡 Fort Pienc",coords:[[41.3917,2.1761],[41.3932,2.1754],[41.3951,2.1762],[41.3968,2.1774],[41.3986,2.1798],[41.3992,2.1825],[41.3984,2.1851],[41.3969,2.1871],[41.3948,2.1866],[41.3928,2.1852],[41.3914,2.1828],[41.3909,2.1796]]},
+ glories:{name:"Glòries",label:"🌆 Glòries",coords:[[41.3992,2.1848],[41.4005,2.1836],[41.4024,2.1844],[41.4042,2.1858],[41.4062,2.1871],[41.4072,2.1897],[41.4065,2.1932],[41.4048,2.1955],[41.4021,2.1962],[41.4001,2.1944],[41.3991,2.1912],[41.3987,2.1878]]},
+ urquinaona:{name:"Urquinaona",label:"🍵 Urquinaona",coords:[[41.3868,2.1685],[41.3881,2.1679],[41.3902,2.1688],[41.3921,2.1702],[41.3931,2.1724],[41.3927,2.1751],[41.3912,2.1778],[41.3891,2.1794],[41.3872,2.1781],[41.3861,2.1754],[41.3859,2.1722]]},
+ sants:{name:"Sants",label:"❤️ Sants",coords:[[41.3691,2.1272],[41.3712,2.1256],[41.3742,2.1261],[41.3771,2.1274],[41.3802,2.1298],[41.3824,2.1331],[41.3821,2.1372],[41.3805,2.1411],[41.3778,2.1437],[41.3745,2.1431],[41.3715,2.1408],[41.3694,2.1365]]},
+ port:{name:"Puerto y Barceloneta",label:"⚓ Puerto y Barceloneta",coords:[[41.3752,2.1841],[41.3771,2.1824],[41.3801,2.1833],[41.3832,2.1854],[41.3861,2.1884],[41.3885,2.1921],[41.3891,2.1963],[41.3878,2.2001],[41.3851,2.2018],[41.3823,2.1995],[41.3796,2.1957],[41.3772,2.1912]]}
 };
 let barcelonaMap=null,barcelonaMarkers={},barcelonaZoneLayers={};
 function initBarcelonaMap(){
