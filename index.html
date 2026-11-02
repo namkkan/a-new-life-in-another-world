@@ -374,15 +374,14 @@ function addEntry(arr,title,note,xp){if(!title.trim())return;arr.unshift({title:
 function saveStudy(){addEntry(state.studies,document.getElementById('studyTopic').value,document.getElementById('studyMinutes').value+' minutos · '+document.getElementById('studyNote').value,15);document.getElementById('studyTopic').value='';document.getElementById('studyNote').value=''}
 function savePlant(){addEntry(state.plants,document.getElementById('plantName').value,document.getElementById('plantPlace').value+' · '+document.getElementById('plantNote').value,10);document.getElementById('plantName').value='';document.getElementById('plantPlace').value='';document.getElementById('plantNote').value=''}
 const recipeIngredientGroups={
- '🥬 Verduras':['Tomate','Patata','Cebolla','Ajo','Zanahoria','Calabacín','Berenjena','Pimiento','Espinacas','Lechuga','Brócoli','Champiñones'],
- '🍎 Frutas':['Manzana','Plátano','Naranja','Limón','Fresa','Aguacate','Melocotón','Pera'],
- '🥩 Carnes y huevos':['Pollo','Pavo','Ternera','Cerdo','Huevos'],
- '🐟 Pescados y mariscos':['Salmón','Atún','Merluza','Bacalao','Gambas','Mejillones'],
+ '🌾 Carbohidratos':['Arroz','Pasta','Avena','Pan','Cuscús','Quinoa','Patata','Boniato','Harina','Tortillas de trigo','Fideos'],
  '🫘 Legumbres':['Lentejas','Garbanzos','Alubias','Guisantes','Soja'],
- '🌾 Cereales y harinas':['Arroz','Pasta','Avena','Pan','Cuscús','Quinoa','Harina'],
+ '🥬 Verduras':['Tomate','Cebolla','Ajo','Zanahoria','Calabacín','Berenjena','Pimiento','Espinacas','Lechuga','Brócoli','Champiñones','Pepino','Judías verdes','Coliflor'],
+ '🍎 Frutas':['Manzana','Plátano','Naranja','Limón','Fresa','Aguacate','Melocotón','Pera','Uvas','Kiwi'],
  '🥛 Lácteos':['Leche','Yogur','Kéfir','Queso','Nata'],
+ '🥩 Carnes, huevos y atún':['Pollo','Pavo','Ternera','Cerdo','Huevos','Atún en lata'],
  '🥜 Frutos secos y semillas':['Almendras','Nueces','Avellanas','Pipas','Chía','Sésamo'],
- '🧂 Otros':['Aceite de oliva','Mantequilla','Miel','Chocolate','Canela','Hierbas aromáticas']
+ '🧂 Otros':['Aceite de oliva','Mantequilla','Miel','Chocolate','Canela','Hierbas aromáticas','Sal','Pimienta']
 };
 let selectedRecipeIngredients=[];
 let activeRecipeIngredient='';
