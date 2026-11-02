@@ -53,6 +53,9 @@ button,input,textarea,select{font:inherit}button{cursor:pointer}
 .leaflet-control-attribution{background:#211b1ecc!important;color:#c9b8b0!important}
 .leaflet-control-attribution a{color:#d5a9a0!important}
 .map-pin{background:#9b4b50;border:2px solid #e6c5b7;border-radius:50%;width:22px;height:22px;box-shadow:0 2px 9px #080607aa;display:grid;place-items:center;color:#fff;font-size:11px}
+.map-zone-label{background:#21191dcc;border:1px solid #c09a70aa;border-radius:20px;color:#f0d9c7;font:11px 'DM Mono';letter-spacing:.5px;padding:5px 9px;white-space:nowrap;box-shadow:0 0 14px #c09a7040}
+.map-zone-label:before{display:none}.zone-dropdown.zone-selected{border-color:#c09a70;box-shadow:0 0 0 1px #c09a7044,0 0 18px #c09a7022}
+.map-legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.map-legend span{font:10px 'DM Mono';color:var(--muted);display:flex;align-items:center;gap:5px}.map-legend i{display:inline-block;width:17px;height:9px;border:1px solid #c09a70;border-radius:3px;background:#9b4b5044}
 @media(max-width:850px){.map-layout{grid-template-columns:1fr}#barcelonaMap{height:420px}}
 
 .page{display:none}.page.active{display:block}.page-title{font:700 30px 'Playfair Display';margin:3px 0 5px}.page-intro{color:var(--muted);font-size:13px;margin:0 0 18px;line-height:1.6}
@@ -128,23 +131,23 @@ footer{text-align:center;color:#806d70;font:10px 'DM Mono';padding:18px}
 <div class="panel">
  <div class="panel-head"><div><h3>Atlas de la aventurera</h3><div class="sub">Primeras zonas · Barcelona</div></div><span class="tag">4 MARCADORES · 6 ZONAS</span></div>
  <div class="map-layout">
-  <div><div id="barcelonaMap" role="application" aria-label="Mapa ilustrado de Barcelona con tres lugares personales"></div><div class="map-note">Puedes acercar, alejar y mover el mapa. Selecciona una zona de la lista para centrarla.</div></div>
+  <div><div id="barcelonaMap" role="application" aria-label="Mapa ilustrado de Barcelona con tres lugares personales"></div><div class="map-note">Explora Barcelona: selecciona un territorio para viajar hasta él. Las áreas son límites ilustrativos del atlas, no fronteras administrativas exactas.<div class="map-legend"><span><i></i> Territorio explorable</span><span>📍 Lugar concreto</span><span>✦ Zona seleccionada</span></div></div></div>
   <div class="map-list">
-   <details class="zone-dropdown" open><summary>🏡 Fort Pienc <small>· tu zona de refugio</small></summary>
+   <details class="zone-dropdown" open><summary onclick="focusBarcelonaZone('fortPienc')">🏡 Fort Pienc <small>· tu zona de refugio</small></summary>
     <button class="map-place" onclick="focusBarcelonaPlace('homeHorta')"><span class="map-symbol">🏡</span><b>El Refugio de la Aventurera</b><small>Carretera Antiga d’Horta · tu punto de partida</small></button>
     <button class="map-place" onclick="focusBarcelonaPlace('aldiFortPienc')"><span class="map-symbol">🛒</span><b>El Mercado de las Provisiones</b><small>ALDI · Plaça del Fort Pienc</small></button>
    </details>
-   <details class="zone-dropdown"><summary>🌆 Glòries</summary>
+   <details class="zone-dropdown"><summary onclick="focusBarcelonaZone('glories')">🌆 Glòries</summary>
     <button class="map-place" onclick="focusBarcelonaPlace('glories')"><span class="map-symbol">🌆</span><b>La Plaza de los Encuentros</b><small>El cruce de los caminos modernos</small></button>
    </details>
-   <details class="zone-dropdown"><summary>🍵 Urquinaona</summary>
+   <details class="zone-dropdown"><summary onclick="focusBarcelonaZone('urquinaona')">🍵 Urquinaona</summary>
     <div class="map-place"><span class="map-symbol">🥐</span><b>La Posada de las Migas</b><small>BuenasMigas · Plaça Urquinaona · ubicación pendiente de fijar</small></div>
     <div class="map-place"><span class="map-symbol">🍵</span><b>El Santuario del Chai</b><small>Cafelunya · Plaça Urquinaona · ubicación pendiente de fijar</small></div>
    </details>
-   <details class="zone-dropdown"><summary>❤️ Sants</summary>
+   <details class="zone-dropdown"><summary onclick="focusBarcelonaZone('sants')">❤️ Sants</summary>
     <button class="map-place" onclick="focusBarcelonaPlace('geri')"><span class="map-symbol">❤️</span><b>El Refugio del Corazón</b><small>Tierras de Sants · lugar aproximado</small></button>
    </details>
-   <details class="zone-dropdown"><summary>⚓ Puerto y Barceloneta</summary>
+   <details class="zone-dropdown"><summary onclick="focusBarcelonaZone('port')">⚓ Puerto y Barceloneta</summary>
     <div class="map-place"><span class="map-symbol">⚓</span><b>Family Art Tattoo</b><small>El Pacto de la Tinta · estudio donde te tatúa tu amiga · ubicación pendiente de fijar</small></div>
    </details>
    <details class="zone-dropdown"><summary>🖤 Otros lugares por ubicar</summary>
@@ -241,11 +244,23 @@ const barcelonaPlaces={
  geri:{coords:[41.37742,2.13181],name:'El Refugio del Corazón',area:'Tierras de Sants · lugar aproximado',symbol:'❤️'},
  aldiFortPienc:{coords:[41.3952,2.1821],name:'El Mercado de las Provisiones',area:'ALDI · Plaça del Fort Pienc, 08013 · provisiones para el refugio',symbol:'🛒'},
 };
-let barcelonaMap=null,barcelonaMarkers={};
+const barcelonaZones={
+ fortPienc:{name:"Fort Pienc",label:"🏡 Fort Pienc",coords:[[41.3915,2.1745],[41.3915,2.1875],[41.3998,2.1875],[41.3998,2.1745]]},
+ glories:{name:"Glòries",label:"🌆 Glòries",coords:[[41.3998,2.184],[41.3998,2.197],[41.4075,2.197],[41.4075,2.184]]},
+ urquinaona:{name:"Urquinaona",label:"🍵 Urquinaona",coords:[[41.3865,2.168],[41.3865,2.1805],[41.3935,2.1805],[41.3935,2.168]]},
+ sants:{name:"Sants",label:"❤️ Sants",coords:[[41.369,2.126],[41.369,2.145],[41.3835,2.145],[41.3835,2.126]]},
+ port:{name:"Puerto y Barceloneta",label:"⚓ Puerto y Barceloneta",coords:[[41.375,2.183],[41.375,2.202],[41.3895,2.202],[41.3895,2.183]]}
+};
+let barcelonaMap=null,barcelonaMarkers={},barcelonaZoneLayers={};
 function initBarcelonaMap(){
  if(barcelonaMap||!document.getElementById('barcelonaMap')||!window.L)return;
  barcelonaMap=L.map('barcelonaMap',{scrollWheelZoom:false}).setView([41.389,2.16],13);
  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',maxZoom:19,opacity:.38}).addTo(barcelonaMap);
+ Object.entries(barcelonaZones).forEach(([id,z])=>{
+  const polygon=L.polygon(z.coords,{color:'#c09a70',weight:2,opacity:.9,fillColor:'#9b4b50',fillOpacity:.19,dashArray:'7 5'}).addTo(barcelonaMap);
+  polygon.bindTooltip(z.label,{permanent:true,direction:'center',className:'map-zone-label'});
+  polygon.on('click',()=>focusBarcelonaZone(id));barcelonaZoneLayers[id]=polygon;
+ });
  Object.entries(barcelonaPlaces).forEach(([id,p])=>{
   const icon=L.divIcon({className:'',html:'<div class="map-pin">'+p.symbol+'</div>',iconSize:[26,26],iconAnchor:[13,13]});
   const marker=L.marker(p.coords,{icon}).addTo(barcelonaMap).bindPopup('<b>'+p.name+'</b><br>'+p.area);
@@ -253,11 +268,18 @@ function initBarcelonaMap(){
  });
  setTimeout(()=>barcelonaMap.invalidateSize(),120);
 }
+function selectAtlasZone(id){
+ Object.entries(barcelonaZoneLayers).forEach(([key,layer])=>layer.setStyle(key===id?{color:'#f0c98e',weight:3,fillColor:'#c07870',fillOpacity:.34,dashArray:''}:{color:'#c09a70',weight:2,fillColor:'#9b4b50',fillOpacity:.19,dashArray:'7 5'}));
+ document.querySelectorAll('.zone-dropdown').forEach(el=>el.classList.toggle('zone-selected',el.dataset.zone===id));
+}
+function focusBarcelonaZone(id){
+ showPage('world');initBarcelonaMap();if(!barcelonaZones[id]||!barcelonaMap)return;
+ selectAtlasZone(id);barcelonaMap.fitBounds(barcelonaZoneLayers[id].getBounds(),{padding:[28,28],maxZoom:15,animate:true});
+}
 function focusBarcelonaPlace(id){
- showPage('world');initBarcelonaMap();
- const p=barcelonaPlaces[id];if(!p||!barcelonaMap)return;
- barcelonaMap.setView(p.coords,16,{animate:true});
- if(barcelonaMarkers[id])barcelonaMarkers[id].openPopup();
+ showPage('world');initBarcelonaMap();const p=barcelonaPlaces[id];if(!p||!barcelonaMap)return;
+ const zone=Object.entries(barcelonaZones).find(([key,z])=>barcelonaZoneLayers[key]&&barcelonaZoneLayers[key].getBounds().contains(p.coords));if(zone)selectAtlasZone(zone[0]);
+ barcelonaMap.setView(p.coords,16,{animate:true});if(barcelonaMarkers[id])barcelonaMarkers[id].openPopup();
 }
 
 function showPage(p,scroll=true){if(!document.getElementById('page-'+p))p='home';if(p==='world'){initBarcelonaMap();setTimeout(()=>barcelonaMap&&barcelonaMap.invalidateSize(),150)}document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById('page-'+p).classList.add('active');document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('active',x.dataset.page===p));try{localStorage.setItem('anotherWorldLastPage',p)}catch(e){}if(scroll)window.scrollTo({top:0,behavior:'smooth'})}
