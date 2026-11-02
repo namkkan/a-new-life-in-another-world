@@ -173,7 +173,7 @@ footer{text-align:center;color:#806d70;font:10px 'DM Mono';padding:18px}
 <div class="panel"><div class="panel-head"><div><h3>Próximas expediciones</h3><div class="sub">Lugares que iremos descubriendo juntas.</div></div><span class="tag">POR COMPLETAR</span></div><div class="empty">🧭 El mapa está abierto. Cada nuevo rincón tendrá su propia historia.</div></div>
 </section>
 <section class="page" id="page-study"><h2 class="page-title">Los Archivos Ancestrales</h2><p class="page-intro">Un lugar tranquilo para estudiar. Anota un tema, un pequeño objetivo o lo que has aprendido hoy.</p><div class="panel"><h3>Sesión de estudio</h3><div class="field"><label>¿Qué estás estudiando?</label><input id="studyTopic" placeholder="Ej. Bibliotecas nacionales"></div><div class="form-row"><div class="field"><label>Minutos de estudio</label><input id="studyMinutes" type="number" min="1" value="25"></div><div class="field"><label>¿Qué has aprendido?</label><input id="studyNote" placeholder="Un pequeño descubrimiento..."></div></div><button class="btn" onclick="saveStudy()">Registrar sesión · +15 XP</button></div><div class="panel"><h3>Crónica de estudio</h3><div id="studyList" class="empty">Tu primera sesión de estudio aparecerá aquí.</div></div></section>
-<section class="page" id="page-kitchen"><h2 class="page-title">La Cocina de la Alquimista</h2><p class="page-intro">Un recetario de platos sencillos y reconfortantes. Sin reglas ni ingredientes prohibidos: solo ideas y descubrimientos.</p><div class="panel"><h3>Guardar una receta</h3><div class="field"><label>Nombre de la receta</label><input id="recipeName" placeholder="Verduras asadas con hierbas"></div><div class="field"><label>Ingredientes y preparación</label><textarea id="recipeNote" placeholder="Ingredientes, pasos y pequeñas variaciones..."></textarea></div><button class="btn" onclick="saveRecipe()">Guardar receta · +10 XP</button></div><div class="panel"><div class="panel-head"><div><h3>Libro de recetas</h3><div class="sub">Valora tus platos y registra cada vez que los prepares o disfrutes.</div></div></div><div id="recipeList" class="recipe-book"></div></div></section>
+<section class="page" id="page-kitchen"><h2 class="page-title">La Cocina de la Alquimista</h2><p class="page-intro">Un recetario de platos sencillos y reconfortantes. Sin reglas ni ingredientes prohibidos: solo ideas y descubrimientos.</p><div class="panel"><h3>Guardar una receta</h3><div class="field"><label>Nombre de la receta</label><input id="recipeName" placeholder="Verduras asadas con hierbas"></div><div class="field"><label>Ingredientes y preparación</label><textarea id="recipeNote" placeholder="Ingredientes, pasos y pequeñas variaciones..."></textarea></div><button class="btn" onclick="saveRecipe()">Guardar receta · +10 XP</button><div id="recipeSaveStatus" class="sub" role="status" aria-live="polite" style="margin-top:10px;min-height:18px"></div></div><div class="panel"><div class="panel-head"><div><h3>Libro de recetas</h3><div class="sub">Valora tus platos y registra cada vez que los prepares o disfrutes.</div></div></div><div id="recipeList" class="recipe-book"></div></div></section>
 <section class="page" id="page-xp-history"><h2 class="page-title">Crónica de experiencia</h2><p class="page-intro">El registro de cada misión, hábito y pequeño logro que te ha concedido experiencia.</p><div class="panel"><div class="panel-head"><div><h3>📜 Historial de XP</h3><div class="sub">Los movimientos aparecerán aquí en orden, del más reciente al más antiguo.</div></div><span class="tag" id="xpHistoryCount">0 REGISTROS</span></div><div id="xpHistoryList"></div></div><button class="btn secondary" onclick="showPage('home')">← Volver al refugio</button></section>
 <section class="page" id="page-journal"><h2 class="page-title">Diario personal</h2><p class="page-intro">Un rincón privado para dejar una nota sobre tu día. No tiene que ser bonito ni productivo.</p><div class="panel"><h3>La página de hoy</h3><div class="field"><label>¿Qué ha pasado hoy?</label><textarea id="journalText" placeholder="Hoy me he dado cuenta de..."></textarea></div><button class="btn" onclick="saveJournal()">Guardar la página de hoy</button></div><div class="panel"><h3>Páginas anteriores</h3><div id="journalList" class="empty">Tu historia empieza con la siguiente frase.</div></div></section>
 <section class="page" id="page-inventory"><h2 class="page-title">Tu inventario</h2><p class="page-intro">Pequeños tesoros que reúnes durante el camino. Este espacio se convertirá en una colección de descubrimientos y recuerdos.</p><div class="panel"><h3>Bolsa de aventurera</h3><div class="item"><span>🌱 Descubrimientos botánicos</span><b id="invPlants">0</b></div><div class="item"><span>📚 Sesiones de estudio</span><b id="invStudy">0</b></div><div class="item"><span>🍲 Recetas guardadas</span><b id="invRecipes">0</b></div><div class="item"><span>✒️ Páginas del diario</span><b id="invJournal">0</b></div></div><div class="panel"><div class="panel-head"><div><h3>Catálogo de tesoros</h3><div class="sub">Tus objetos, recuerdos y pequeños tesoros personales.</div></div><span class="tag" id="treasureCount">10 TESOROS</span></div><div class="treasure-grid" id="treasureList"></div></div>
@@ -369,9 +369,29 @@ function addEntry(arr,title,note,xp){if(!title.trim())return;arr.unshift({title:
 function saveStudy(){addEntry(state.studies,document.getElementById('studyTopic').value,document.getElementById('studyMinutes').value+' minutos · '+document.getElementById('studyNote').value,15);document.getElementById('studyTopic').value='';document.getElementById('studyNote').value=''}
 function savePlant(){addEntry(state.plants,document.getElementById('plantName').value,document.getElementById('plantPlace').value+' · '+document.getElementById('plantNote').value,10);document.getElementById('plantName').value='';document.getElementById('plantPlace').value='';document.getElementById('plantNote').value=''}
 function saveRecipe(){
- const title=document.getElementById('recipeName').value.trim();if(!title){alert('Ponle un nombre a la receta.');return}
- state.recipes=Array.isArray(state.recipes)?state.recipes:[];state.recipes.unshift({id:String(Date.now()),title,note:document.getElementById('recipeNote').value.trim(),date:new Date().toLocaleDateString('es-ES'),rating:0,timesEaten:0,preparedDates:[]});
- gainXP(10,'Guardar receta: '+title);document.getElementById('recipeName').value='';document.getElementById('recipeNote').value='';persist();alert('📖 ¡Receta guardada en tu libro!');
+ const title=document.getElementById('recipeName').value.trim();
+ const note=document.getElementById('recipeNote').value.trim();
+ const status=document.getElementById('recipeSaveStatus');
+ if(!title){if(status)status.textContent='Escribe primero el nombre de la receta.';return}
+ if(!Array.isArray(state.recipes))state.recipes=[];
+ const recipe={id:'recipe-'+Date.now()+'-'+Math.random().toString(36).slice(2,7),title,note,date:new Date().toLocaleDateString('es-ES'),rating:0,timesEaten:0,preparedDates:[]};
+ const previousXP=Number(state.xp)||0;
+ const previousHistory=Array.isArray(state.xpHistory)?state.xpHistory.slice():[];
+ state.recipes.unshift(recipe);
+ gainXP(10,'Guardar receta: '+title);
+ try{
+  localStorage.setItem(KEY,JSON.stringify(state));
+  document.getElementById('recipeName').value='';
+  document.getElementById('recipeNote').value='';
+  renderRecipeBook();
+  const count=document.getElementById('invRecipes');if(count)count.textContent=state.recipes.length;
+  if(status)status.textContent='✓ «'+title+'» está guardada en tu libro. Has ganado 10 XP.';
+ }catch(error){
+  state.recipes=state.recipes.filter(r=>r.id!==recipe.id);
+  state.xp=previousXP;state.xpHistory=previousHistory;
+  if(status)status.textContent='No se ha podido guardar. No se han sumado XP. Revisa el almacenamiento del navegador.';
+  console.error('Error al guardar receta:',error);
+ }
 }
 function renderXPHistory(){
  const list=document.getElementById('xpHistoryList');if(!list)return;
