@@ -126,14 +126,13 @@ footer{text-align:center;color:#806d70;font:10px 'DM Mono';padding:18px}
 <h2 class="page-title">Mi ciudad · Barcelona</h2>
 <p class="page-intro">Un atlas personal para recorrer Barcelona a tu ritmo: los lugares de siempre, los rincones que te esperan y los recuerdos que iremos guardando.</p>
 <div class="panel">
- <div class="panel-head"><div><h3>Atlas de la aventurera</h3><div class="sub">Primeras zonas · Barcelona</div></div><span class="tag">5 MARCADORES · 6 ZONAS</span></div>
+ <div class="panel-head"><div><h3>Atlas de la aventurera</h3><div class="sub">Primeras zonas · Barcelona</div></div><span class="tag">4 MARCADORES · 6 ZONAS</span></div>
  <div class="map-layout">
   <div><div id="barcelonaMap" role="application" aria-label="Mapa ilustrado de Barcelona con tres lugares personales"></div><div class="map-note">Puedes acercar, alejar y mover el mapa. Selecciona una zona de la lista para centrarla.</div></div>
   <div class="map-list">
    <details class="zone-dropdown" open><summary>🏡 Fort Pienc <small>· tu zona de refugio</small></summary>
     <button class="map-place" onclick="focusBarcelonaPlace('homeHorta')"><span class="map-symbol">🏡</span><b>El Refugio de la Aventurera</b><small>Carretera Antiga d’Horta · tu punto de partida</small></button>
     <button class="map-place" onclick="focusBarcelonaPlace('aldiFortPienc')"><span class="map-symbol">🛒</span><b>El Mercado de las Provisiones</b><small>ALDI · Plaça del Fort Pienc</small></button>
-    <button class="map-place" onclick="focusBarcelonaPlace('primaRibes')"><span class="map-symbol">🎁</span><b>El Bazar de los Hallazgos</b><small>PrimaPrix · Plus Code 95VJ+WH</small></button>
    </details>
    <details class="zone-dropdown"><summary>🌆 Glòries</summary>
     <button class="map-place" onclick="focusBarcelonaPlace('glories')"><span class="map-symbol">🌆</span><b>La Plaza de los Encuentros</b><small>El cruce de los caminos modernos</small></button>
@@ -241,7 +240,6 @@ const barcelonaPlaces={
  glories:{coords:[41.4036,2.1904],name:'La Plaza de los Encuentros',area:'El cruce de los caminos modernos',symbol:'🌆'},
  geri:{coords:[41.37742,2.13181],name:'El Refugio del Corazón',area:'Tierras de Sants · lugar aproximado',symbol:'❤️'},
  aldiFortPienc:{coords:[41.3952,2.1821],name:'El Mercado de las Provisiones',area:'ALDI · Plaça del Fort Pienc, 08013 · provisiones para el refugio',symbol:'🛒'},
- primaRibes:{coords:[41.3948125,2.1814375],name:'El Bazar de los Hallazgos',area:'PrimaPrix · Plus Code 95VJ+WH, Barcelona · ubicación indicada por ti',symbol:'🎁'}
 };
 let barcelonaMap=null,barcelonaMarkers={};
 function initBarcelonaMap(){
