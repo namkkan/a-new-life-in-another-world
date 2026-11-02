@@ -129,50 +129,43 @@ footer{text-align:center;color:#806d70;font:10px 'DM Mono';padding:18px}
 <h2 class="page-title">Mi ciudad · Barcelona</h2>
 <p class="page-intro">Un atlas personal para recorrer Barcelona a tu ritmo: los lugares de siempre, los rincones que te esperan y los recuerdos que iremos guardando.</p>
 <div class="panel">
- <div class="panel-head"><div><h3>Atlas de la aventurera</h3><div class="sub">Primeras zonas · Barcelona</div></div><span class="tag">4 MARCADORES · 7 ZONAS</span></div>
+ <div class="panel-head"><div><h3>Atlas de la aventurera</h3><div class="sub">Territorios de Barcelona · lugares por dirección</div></div><span class="tag">16 PINES · 7 ZONAS</span></div>
  <div class="map-layout">
-  <div><div id="barcelonaMap" role="application" aria-label="Mapa ilustrado de Barcelona con lugares personales"></div><div class="map-note">Explora Barcelona: selecciona un territorio para viajar hasta él. Los territorios tienen contornos dibujados a mano para el atlas; son aproximaciones visuales, no límites oficiales.<div class="map-legend"><span><i></i> Territorio explorable</span><span>📍 Lugar concreto</span><span>✦ Zona seleccionada</span></div></div></div>
+  <div><div id="barcelonaMap" role="application" aria-label="Mapa de Barcelona dividido por zonas y lugares personales"></div><div class="map-note">Selecciona una zona para recorrer su territorio o pulsa un pin para ver el lugar. Los contornos son trazados orientativos del atlas, no límites administrativos oficiales.<div class="map-legend"><span><i></i> Territorio</span><span>📍 Lugar con dirección</span><span>✦ Zona seleccionada</span></div></div></div>
   <div class="map-list">
-   <details class="zone-dropdown" open><summary onclick="focusBarcelonaZone('fortPienc')">🏡 Fort Pienc <small>· tu zona de refugio</small></summary>
-    <button class="map-place" onclick="focusBarcelonaPlace('homeHorta')"><span class="map-symbol">🏡</span><b>El Refugio de la Aventurera</b><small>Carretera Antiga d’Horta · tu punto de partida</small></button>
+   <details class="zone-dropdown" data-zone="fortPienc" open><summary onclick="focusBarcelonaZone('fortPienc')">🏡 Fort Pienc</summary>
+    <button class="map-place" onclick="focusBarcelonaPlace('homeHorta')"><span class="map-symbol">🏡</span><b>El Refugio de la Aventurera</b><small>Carretera Antiga d’Horta · ubicación aproximada</small></button>
     <button class="map-place" onclick="focusBarcelonaPlace('aldiFortPienc')"><span class="map-symbol">🛒</span><b>El Mercado de las Provisiones</b><small>ALDI · Plaça del Fort Pienc</small></button>
+    <button class="map-place" onclick="focusBarcelonaPlace('bibliotecaMoix')"><span class="map-symbol">📚</span><b>El Archivo de las Páginas Silenciosas</b><small>Biblioteca Fort Pienc – Ana María Moix · Plaça Fort Pienc, 4</small></button>
    </details>
-   <details class="zone-dropdown"><summary onclick="focusBarcelonaZone('glories')">🌆 Glòries</summary>
-    <button class="map-place" onclick="focusBarcelonaPlace('glories')"><span class="map-symbol">🌆</span><b>La Plaza de los Encuentros</b><small>El cruce de los caminos modernos</small></button>
+   <details class="zone-dropdown" data-zone="dreta"><summary onclick="focusBarcelonaZone('dreta')">🍵 Dreta de l’Eixample · Urquinaona</summary>
+    <button class="map-place" onclick="focusBarcelonaPlace('buenasMigas')"><span class="map-symbol">🥐</span><b>La Posada de las Migas</b><small>Buenas Migas · Ronda de Sant Pere, 27</small></button>
+    <button class="map-place" onclick="focusBarcelonaPlace('cafelunya')"><span class="map-symbol">🍵</span><b>El Santuario del Chai</b><small>Cafèlunya · Ronda de Sant Pere, 27</small></button>
+    <button class="map-place" onclick="focusBarcelonaPlace('lembruixLluria')"><span class="map-symbol">🖤</span><b>L’Embruix · Roger de Llúria</b><small>Roger de Llúria, 8 · tienda 1</small></button>
+    <button class="map-place" onclick="focusBarcelonaPlace('stickTape')"><span class="map-symbol">✂️</span><b>El Bazar de los Pequeños Tesoros</b><small>Stick & Tape · Passeig de Sant Joan, 5</small></button>
+    <button class="map-place" onclick="focusBarcelonaPlace('capSantJoan')"><span class="map-symbol">🌿</span><b>La Casa de los Sanadores</b><small>CAP Passeig de Sant Joan · Passeig de Sant Joan, 20</small></button>
    </details>
-   <details class="zone-dropdown"><summary onclick="focusBarcelonaZone('urquinaona')">🍵 Urquinaona</summary>
-    <div class="map-place"><span class="map-symbol">🥐</span><b>La Posada de las Migas</b><small>BuenasMigas · Plaça Urquinaona · ubicación pendiente de fijar</small></div>
-    <div class="map-place"><span class="map-symbol">🍵</span><b>El Santuario del Chai</b><small>Cafelunya · Plaça Urquinaona · ubicación pendiente de fijar</small></div>
+   <details class="zone-dropdown" data-zone="gotic"><summary onclick="focusBarcelonaZone('gotic')">🕯️ Barri Gòtic · Liceu</summary>
+    <button class="map-place" onclick="focusBarcelonaPlace('lembruixBoqueria')"><span class="map-symbol">🖤</span><b>L’Embruix · Boqueria</b><small>Carrer de la Boqueria, 18 · tienda 2, junto al Liceu</small></button>
+    <button class="map-place" onclick="focusBarcelonaPlace('familyTattoo')"><span class="map-symbol">⚓</span><b>El Pacto de la Tinta</b><small>Family Art Tattoo · Carrer del Regomir, 18</small></button>
    </details>
-   <details class="zone-dropdown"><summary onclick="focusBarcelonaZone('sants')">❤️ Sants</summary>
-    <button class="map-place" onclick="focusBarcelonaPlace('geri')"><span class="map-symbol">❤️</span><b>El Refugio del Corazón</b><small>Tierras de Sants · lugar aproximado</small></button>
+   <details class="zone-dropdown" data-zone="santPau"><summary onclick="focusBarcelonaZone('santPau')">🏥 Sant Pau · Guinardó</summary>
+    <button class="map-place" onclick="focusBarcelonaPlace('hospitalSantPau')"><span class="map-symbol">🏥</span><b>El Santuario de la Curación</b><small>Hospital de Sant Pau · Sant Quintí, 89</small></button>
    </details>
-   <details class="zone-dropdown"><summary onclick="focusBarcelonaZone('port')">⚓ Puerto y Barceloneta</summary>
-    <div class="map-place"><span class="map-symbol">⚓</span><b>Family Art Tattoo</b><small>El Pacto de la Tinta · estudio donde te tatúa tu amiga · ubicación pendiente de fijar</small></div>
+   <details class="zone-dropdown" data-zone="sants"><summary onclick="focusBarcelonaZone('sants')">❤️ Sants</summary>
+    <button class="map-place" onclick="focusBarcelonaPlace('geri')"><span class="map-symbol">❤️</span><b>El Refugio del Corazón</b><small>Tierras de Sants · ubicación aproximada</small></button>
    </details>
-   <details class="zone-dropdown"><summary>🏥 Sant Pau · Passeig de Sant Joan</summary>
-    <div class="map-place"><span class="map-symbol">🏥</span><b>El Santuario de la Curación</b><small>Hospital de Sant Pau · tu hospital de referencia</small></div>
-    <div class="map-place"><span class="map-symbol">🌿</span><b>La Casa de los Sanadores</b><small>CAP Passeig de Sant Joan · tu centro de atención primaria</small></div>
+   <details class="zone-dropdown" data-zone="barceloneta"><summary onclick="focusBarcelonaZone('barceloneta')">⚓ Barceloneta · Puerto</summary>
+    <button class="map-place" onclick="focusBarcelonaPlace('hospitalMar')"><span class="map-symbol">🏥</span><b>Hospital del Mar</b><small>Pg. Marítim de la Barceloneta, 25</small></button>
+    <button class="map-place" onclick="focusBarcelonaPlace('hotelW')"><span class="map-symbol">🌊</span><b>El Faro del Horizonte</b><small>Hotel W · Plaça Rosa dels Vents, 1</small></button>
    </details>
-   <details class="zone-dropdown"><summary>📚 Bibliotecas y lugares de estudio</summary>
-    <div class="map-place"><span class="map-symbol">📚</span><b>El Archivo de las Páginas Silenciosas</b><small>Biblioteca Maria Moix · Barcelona · ubicación pendiente de fijar</small></div>
-    <div class="map-place"><span class="map-symbol">🎓</span><b>El Refugio de los Estudiosos</b><small>Biblioteca de la Universitat de Barcelona · Plaça Universitat · donde estudias a veces con tu novio</small></div>
+   <details class="zone-dropdown" data-zone="santMarti"><summary onclick="focusBarcelonaZone('santMarti')">🌆 Sant Martí · Glòries · Diagonal Mar</summary>
+    <button class="map-place" onclick="focusBarcelonaPlace('glories')"><span class="map-symbol">🌆</span><b>La Plaza de los Encuentros</b><small>Glòries · ubicación aproximada</small></button>
+    <button class="map-place" onclick="focusBarcelonaPlace('diagonalMar')"><span class="map-symbol">🛍️</span><b>El Gran Mercado de Cristal</b><small>Diagonal Mar · Av. Diagonal, 3</small></button>
+    <button class="map-place" onclick="focusBarcelonaPlace('forum')"><span class="map-symbol">⚓</span><b>Las Tierras del Gran Horizonte</b><small>Parc del Fòrum · Carrer de la Pau, 12</small></button>
    </details>
-   <details class="zone-dropdown"><summary>✂️ Arte y papelería</summary>
-    <div class="map-place"><span class="map-symbol">🎀</span><b>El Bazar de los Pequeños Tesoros</b><small>Stick & Tape · papelería, pegatinas y pequeños hallazgos · ubicación pendiente de fijar</small></div>
-   </details>
-   <details class="zone-dropdown"><summary>🌊 Diagonal Mar · Fòrum</summary>
-    <div class="map-place"><span class="map-symbol">🛍️</span><b>El Gran Mercado de Cristal</b><small>Diagonal Mar · centro comercial que frecuentas</small></div>
-    <div class="map-place"><span class="map-symbol">⚓</span><b>Las Tierras del Gran Horizonte</b><small>Parc del Fòrum · zona que frecuentas</small></div>
-   </details>
-   <details class="zone-dropdown"><summary>🌊 Rutas junto al mar</summary>
-    <div class="map-place"><span class="map-symbol">🚶</span><b>El Sendero de las Mareas</b><small>Ruta a pie desde el Hospital del Mar, siguiendo las playas hasta el Hotel W</small></div>
-   </details>
-   <details class="zone-dropdown"><summary>🖤 Otros lugares por ubicar</summary>
-    <div class="map-place"><span class="map-symbol">🖤</span><b>L’Embruix</b><small>Estudio de piercings · falta confirmar la dirección exacta</small></div>
-   </details>
-   <div class="panel" style="padding:13px;margin:3px 0 0"><b style="font:600 14px 'Playfair Display'">Nuestro cuaderno de campo</b><p class="map-note" style="margin-bottom:0">Cada zona tendrá su propio registro de visitas, lugares descubiertos y recuerdos. Los sitios sin marcador aparecerán aquí hasta que fijemos su posición exacta.</p></div>
-  </div>  </div>
+   <div class="panel" style="padding:13px;margin:3px 0 0"><b style="font:600 14px 'Playfair Display'">Nuestro cuaderno de campo</b><p class="map-note" style="margin-bottom:0">Las zonas agrupan lugares por proximidad real. Los pines con dirección localizada son más precisos; los puntos aproximados los iremos corrigiendo contigo.</p></div>
+  </div>
  </div>
 </div>
 <div class="panel"><div class="panel-head"><div><h3>Próximas expediciones</h3><div class="sub">Lugares que iremos descubriendo juntas.</div></div><span class="tag">POR COMPLETAR</span></div><div class="empty">🧭 El mapa está abierto. Cada nuevo rincón tendrá su propia historia.</div></div>
@@ -257,25 +250,40 @@ function saveSetback(){const what=document.getElementById('setbackWhat').value.t
 
 
 const barcelonaPlaces={
- homeHorta:{coords:[41.3941133,2.1801825],name:'El Refugio de la Aventurera',area:'Carretera Antiga d’Horta · ubicación aproximada en el centro del tramo',symbol:'🏡'},
- glories:{coords:[41.4036,2.1904],name:'La Plaza de los Encuentros',area:'El cruce de los caminos modernos',symbol:'🌆'},
+ homeHorta:{coords:[41.3941133,2.1801825],name:'El Refugio de la Aventurera',area:'Carretera Antiga d’Horta · ubicación aproximada',symbol:'🏡'},
+ aldiFortPienc:{coords:[41.3952,2.1821],name:'El Mercado de las Provisiones',area:'ALDI · Plaça del Fort Pienc',symbol:'🛒'},
+ bibliotecaMoix:{coords:[41.3930,2.1810],name:'El Archivo de las Páginas Silenciosas',area:'Biblioteca Fort Pienc – Ana María Moix · Plaça Fort Pienc, 4',symbol:'📚'},
+ buenasMigas:{coords:[41.3891,2.1744],name:'La Posada de las Migas',area:'Buenas Migas · Ronda de Sant Pere, 27',symbol:'🥐'},
+ cafelunya:{coords:[41.3891,2.1744],name:'El Santuario del Chai',area:'Cafèlunya · Ronda de Sant Pere, 27',symbol:'🍵'},
+ lembruixLluria:{coords:[41.3896,2.1702],name:'L’Embruix · Roger de Llúria',area:'Carrer de Roger de Llúria, 8 · tienda 1',symbol:'🖤'},
+ stickTape:{coords:[41.3899,2.1758],name:'El Bazar de los Pequeños Tesoros',area:'Stick & Tape · Passeig de Sant Joan, 5',symbol:'✂️'},
+ capSantJoan:{coords:[41.3921,2.1759],name:'La Casa de los Sanadores',area:'CAP Passeig de Sant Joan · Passeig de Sant Joan, 20',symbol:'🌿'},
+ lembruixBoqueria:{coords:[41.3825,2.1734],name:'L’Embruix · Boqueria',area:'Carrer de la Boqueria, 18 · tienda 2, junto al Liceu',symbol:'🖤'},
+ familyTattoo:{coords:[41.3825,2.1792],name:'El Pacto de la Tinta',area:'Family Art Tattoo · Carrer del Regomir, 18',symbol:'⚓'},
+ hospitalSantPau:{coords:[41.4130,2.1740],name:'El Santuario de la Curación',area:'Hospital de Sant Pau · Carrer de Sant Quintí, 89',symbol:'🏥'},
  geri:{coords:[41.37742,2.13181],name:'El Refugio del Corazón',area:'Tierras de Sants · lugar aproximado',symbol:'❤️'},
- aldiFortPienc:{coords:[41.3952,2.1821],name:'El Mercado de las Provisiones',area:'ALDI · Plaça del Fort Pienc, 08013 · provisiones para el refugio',symbol:'🛒'},
+ hospitalMar:{coords:[41.3840,2.1920],name:'Hospital del Mar',area:'Passeig Marítim de la Barceloneta, 25',symbol:'🏥'},
+ hotelW:{coords:[41.3688,2.1897],name:'El Faro del Horizonte',area:'W Barcelona · Plaça Rosa dels Vents, 1',symbol:'🌊'},
+ glories:{coords:[41.4036,2.1904],name:'La Plaza de los Encuentros',area:'Glòries · ubicación aproximada',symbol:'🌆'},
+ diagonalMar:{coords:[41.4080,2.2160],name:'El Gran Mercado de Cristal',area:'Diagonal Mar · Avinguda Diagonal, 3',symbol:'🛍️'},
+ forum:{coords:[41.4110,2.2240],name:'Las Tierras del Gran Horizonte',area:'Parc del Fòrum · Carrer de la Pau, 12',symbol:'⚓'}
 };
 const barcelonaZones={
- fortPienc:{name:"Fort Pienc",label:"🏡 Fort Pienc",coords:[[41.3907,2.1742],[41.3915,2.1728],[41.3931,2.1721],[41.3946,2.1728],[41.3960,2.1741],[41.3978,2.1761],[41.3990,2.1785],[41.3994,2.1810],[41.3987,2.1832],[41.3970,2.1843],[41.3949,2.1840],[41.3930,2.1831],[41.3915,2.1811],[41.3905,2.1784]]},
- glories:{name:"Glòries",label:"🌆 Glòries",coords:[[41.4000,2.1849],[41.4012,2.1840],[41.4028,2.1845],[41.4041,2.1857],[41.4057,2.1874],[41.4070,2.1899],[41.4072,2.1926],[41.4064,2.1950],[41.4048,2.1964],[41.4028,2.1960],[41.4012,2.1946],[41.4001,2.1923],[41.3997,2.1895],[41.3996,2.1868]]},
- urquinaona:{name:"Urquinaona",label:"🍵 Urquinaona",coords:[[41.3858,2.1681],[41.3871,2.1674],[41.3888,2.1680],[41.3902,2.1692],[41.3915,2.1710],[41.3925,2.1731],[41.3922,2.1752],[41.3911,2.1771],[41.3895,2.1783],[41.3878,2.1777],[41.3865,2.1760],[41.3856,2.1738],[41.3852,2.1710]]},
- sants:{name:"Sants",label:"❤️ Sants",coords:[[41.3690,2.1271],[41.3703,2.1258],[41.3725,2.1254],[41.3747,2.1262],[41.3770,2.1276],[41.3790,2.1297],[41.3809,2.1325],[41.3820,2.1355],[41.3816,2.1383],[41.3802,2.1408],[41.3780,2.1424],[41.3754,2.1428],[41.3731,2.1416],[41.3710,2.1392],[41.3696,2.1360],[41.3689,2.1320]]},
- port:{name:"Puerto y Barceloneta",label:"⚓ Puerto y Barceloneta",coords:[[41.3749,2.1840],[41.3760,2.1827],[41.3777,2.1824],[41.3794,2.1833],[41.3811,2.1848],[41.3830,2.1868],[41.3850,2.1895],[41.3868,2.1926],[41.3880,2.1958],[41.3881,2.1984],[41.3870,2.2003],[41.3851,2.2011],[41.3832,2.1997],[41.3814,2.1972],[41.3795,2.1942],[41.3775,2.1908],[41.3760,2.1873]]}
+ fortPienc:{name:'Fort Pienc',label:'🏡 Fort Pienc',coords:[[41.3905,2.1760],[41.3915,2.1728],[41.3931,2.1721],[41.3946,2.1728],[41.3960,2.1741],[41.3978,2.1761],[41.3990,2.1785],[41.3994,2.1810],[41.3987,2.1832],[41.3970,2.1843],[41.3949,2.1840],[41.3930,2.1831],[41.3915,2.1811]]},
+ dreta:{name:'Dreta de l’Eixample · Urquinaona',label:'🍵 Dreta de l’Eixample',coords:[[41.3852,2.1640],[41.3870,2.1630],[41.3895,2.1640],[41.3920,2.1660],[41.3940,2.1690],[41.3950,2.1720],[41.3940,2.1760],[41.3920,2.1790],[41.3890,2.1800],[41.3860,2.1770],[41.3845,2.1730]]},
+ gotic:{name:'Barri Gòtic · Liceu',label:'🕯️ Barri Gòtic',coords:[[41.3780,2.1690],[41.3795,2.1680],[41.3820,2.1690],[41.3840,2.1710],[41.3850,2.1740],[41.3840,2.1780],[41.3820,2.1800],[41.3790,2.1780],[41.3775,2.1740]]},
+ santPau:{name:'Sant Pau · Guinardó',label:'🏥 Sant Pau',coords:[[41.4080,2.1660],[41.4100,2.1630],[41.4140,2.1640],[41.4170,2.1680],[41.4170,2.1760],[41.4140,2.1800],[41.4100,2.1790],[41.4075,2.1740]]},
+ sants:{name:'Sants',label:'❤️ Sants',coords:[[41.3690,2.1271],[41.3703,2.1258],[41.3725,2.1254],[41.3747,2.1262],[41.3770,2.1276],[41.3790,2.1297],[41.3809,2.1325],[41.3820,2.1355],[41.3816,2.1383],[41.3802,2.1408],[41.3780,2.1424],[41.3754,2.1428],[41.3731,2.1416],[41.3710,2.1392],[41.3696,2.1360],[41.3689,2.1320]]},
+ barceloneta:{name:'Barceloneta · Puerto',label:'⚓ Barceloneta',coords:[[41.3749,2.1840],[41.3760,2.1827],[41.3777,2.1824],[41.3794,2.1833],[41.3811,2.1848],[41.3830,2.1868],[41.3850,2.1895],[41.3868,2.1926],[41.3880,2.1958],[41.3881,2.1984],[41.3870,2.2003],[41.3851,2.2011],[41.3832,2.1997],[41.3814,2.1972],[41.3795,2.1942],[41.3775,2.1908],[41.3760,2.1873]]},
+ santMarti:{name:'Sant Martí · Glòries · Diagonal Mar',label:'🌆 Sant Martí',coords:[[41.3980,2.1840],[41.4000,2.1820],[41.4040,2.1830],[41.4080,2.1870],[41.4110,2.1930],[41.4130,2.2020],[41.4140,2.2150],[41.4120,2.2260],[41.4070,2.2260],[41.4030,2.2160],[41.4000,2.2050],[41.3980,2.1950]]}
 };
 let barcelonaMap=null,barcelonaMarkers={},barcelonaZoneLayers={};
 function initBarcelonaMap(){
  if(barcelonaMap||!document.getElementById('barcelonaMap')||!window.L)return;
- barcelonaMap=L.map('barcelonaMap',{scrollWheelZoom:false}).setView([41.389,2.16],13);
+ barcelonaMap=L.map('barcelonaMap',{scrollWheelZoom:false}).setView([41.393,2.178],12);
  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',maxZoom:19,opacity:.38}).addTo(barcelonaMap);
  Object.entries(barcelonaZones).forEach(([id,z])=>{
-  const polygon=L.polygon(z.coords,{color:'#c09a70',weight:2,opacity:.9,fillColor:'#9b4b50',fillOpacity:.19,dashArray:'7 5'}).addTo(barcelonaMap);
+  const polygon=L.polygon(z.coords,{color:'#c09a70',weight:2,opacity:.9,fillColor:'#9b4b50',fillOpacity:.16,dashArray:'7 5'}).addTo(barcelonaMap);
   polygon.bindTooltip(z.label,{permanent:true,direction:'center',className:'map-zone-label'});
   polygon.on('click',()=>focusBarcelonaZone(id));barcelonaZoneLayers[id]=polygon;
  });
@@ -287,7 +295,7 @@ function initBarcelonaMap(){
  setTimeout(()=>barcelonaMap.invalidateSize(),120);
 }
 function selectAtlasZone(id){
- Object.entries(barcelonaZoneLayers).forEach(([key,layer])=>layer.setStyle(key===id?{color:'#f0c98e',weight:3,fillColor:'#c07870',fillOpacity:.34,dashArray:''}:{color:'#c09a70',weight:2,fillColor:'#9b4b50',fillOpacity:.19,dashArray:'7 5'}));
+ Object.entries(barcelonaZoneLayers).forEach(([key,layer])=>layer.setStyle(key===id?{color:'#f0c98e',weight:3,fillColor:'#c07870',fillOpacity:.32,dashArray:''}:{color:'#c09a70',weight:2,fillColor:'#9b4b50',fillOpacity:.16,dashArray:'7 5'}));
  document.querySelectorAll('.zone-dropdown').forEach(el=>el.classList.toggle('zone-selected',el.dataset.zone===id));
 }
 function focusBarcelonaZone(id){
