@@ -374,7 +374,7 @@ function addEntry(arr,title,note,xp){if(!title.trim())return;arr.unshift({title:
 function saveStudy(){addEntry(state.studies,document.getElementById('studyTopic').value,document.getElementById('studyMinutes').value+' minutos · '+document.getElementById('studyNote').value,15);document.getElementById('studyTopic').value='';document.getElementById('studyNote').value=''}
 function savePlant(){addEntry(state.plants,document.getElementById('plantName').value,document.getElementById('plantPlace').value+' · '+document.getElementById('plantNote').value,10);document.getElementById('plantName').value='';document.getElementById('plantPlace').value='';document.getElementById('plantNote').value=''}
 const recipeIngredientGroups={
- '🌾 Carbohidratos':['Arroz','Pasta','Avena','Pan','Cuscús','Quinoa','Patata','Boniato','Harina','Tortillas de trigo','Fideos'],
+ '🌾 Carbohidratos':['Arroz','Pasta','Avena','Pan','Quinoa','Harina'],
  '🫘 Legumbres':['Lentejas','Garbanzos','Alubias','Guisantes','Soja'],
  '🥬 Verduras':['Tomate','Cebolla','Ajo','Zanahoria','Calabacín','Berenjena','Pimiento','Espinacas','Lechuga','Brócoli','Champiñones','Pepino','Judías verdes','Coliflor'],
  '🍎 Frutas':['Manzana','Plátano','Naranja','Limón','Fresa','Aguacate','Melocotón','Pera','Uvas','Kiwi'],
