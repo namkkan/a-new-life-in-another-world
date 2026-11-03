@@ -252,7 +252,7 @@ function render(){
  document.getElementById('xp').textContent=xp;document.getElementById('level').textContent=lv;document.getElementById('topLevel').textContent='Nivel '+lv;document.getElementById('doneCount').textContent=done;
  document.getElementById('xpBar').style.width=Math.min(100,(within/needed)*100)+'%';document.getElementById('nextLevel').textContent=(needed-within)+' XP para el nivel '+(lv+1)+' · este nivel requiere '+needed+' XP';
  document.getElementById('charLevel').textContent=lv;document.getElementById('charXP').textContent=xp+' XP';
- document.getElementById('roomAvatar').textContent=state.avatar;document.getElementById('avatarPreview').textContent=state.avatar;
+ const roomAvatar=document.getElementById('roomAvatar');if(roomAvatar)roomAvatar.textContent=state.avatar;document.getElementById('avatarPreview').textContent=state.avatar;
  document.getElementById('charName').value=state.name;document.getElementById('hair').value=state.avatar;document.getElementById('outfit').value=state.outfit;
  document.getElementById('homeQuests').innerHTML=state.quests.slice(0,4).map(q=>questHTML(q)).join('');
  document.getElementById('allQuests').innerHTML=state.quests.map(q=>questHTML(q)).join('');
