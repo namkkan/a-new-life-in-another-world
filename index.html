@@ -26,6 +26,21 @@ button,input,textarea,select{font:inherit}button{cursor:pointer}
 .hero:after{content:"✿  ❧  ✧";position:absolute;right:20px;top:10px;font-size:46px;color:#b77a78;opacity:.2;letter-spacing:10px}
 .eyebrow{font:11px 'DM Mono';letter-spacing:1.5px;color:var(--moss);text-transform:uppercase}.hero h2{font:700 clamp(27px,4vw,40px) 'Playfair Display';margin:9px 0}.hero p{max-width:510px;color:#c1aaa5;line-height:1.6;font-size:14px;margin:0}
 .hero-art{font-size:100px;filter:drop-shadow(4px 7px 0 #6d79512a);margin-right:8%;z-index:1}\n.cottage-art{position:relative;overflow:hidden;border:1px solid #76545a;border-radius:16px;margin:0 0 16px;background:#211b25;box-shadow:var(--shadow)}.cottage-art img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;object-position:center}.cottage-art figcaption{position:relative;padding:17px 22px 19px;background:#211b25;color:#f0d9d0;font:italic 15px 'Playfair Display',serif}.cottage-art figcaption b{display:block;font-style:normal;font-size:21px;margin-bottom:4px}.cottage-art .art-label{position:absolute;top:14px;left:14px;padding:7px 11px;border:1px solid #c09a70aa;border-radius:30px;background:#211b25cc;color:#e6c5b7;font:10px 'DM Mono';letter-spacing:1px;text-transform:uppercase}
+/* Portada de cuento: maga y familiar */
+body{background:radial-gradient(ellipse at 50% 0%,#32253f 0%,#1a1620 52%,#151219 100%);background-attachment:fixed}
+.story-welcome{display:grid;grid-template-columns:minmax(160px,38%) minmax(0,1fr);gap:18px;align-items:center;min-height:285px;padding:24px 30px;background:linear-gradient(125deg,#e9d8bd,#f7e9cf 60%,#e6d1ae);border:2px solid #b78d60;box-shadow:0 8px 0 #291b28,0 18px 45px #0b081077}
+.story-welcome:before{content:"✦";position:absolute;left:12px;top:9px;color:#8b664d;font-size:22px}
+.story-welcome:after{content:"✧ ❧ ✧";right:16px;top:8px;color:#987050;opacity:.45;font-size:23px}
+.story-welcome-art{position:relative;z-index:1;display:flex;justify-content:center;align-items:center;min-width:0}
+.story-welcome-art img{display:block;width:100%;max-width:290px;max-height:300px;object-fit:contain;filter:drop-shadow(0 8px 8px #5a304844)}
+.story-welcome-copy{position:relative;z-index:1;text-align:center;min-width:0}
+.story-welcome .eyebrow{color:#906a4e}
+.story-welcome h2{color:#47243e;font:700 clamp(27px,3.5vw,43px) 'Playfair Display',serif;line-height:1.2;margin:13px 0}
+.story-welcome p{max-width:520px;margin:auto;color:#59443f;font-size:15px;line-height:1.8}
+.story-ornament{color:#a57b4e;letter-spacing:3px;margin:12px 0 18px}
+#page-home .tile{background:linear-gradient(145deg,#413044,#30252f);border-color:#785b70}
+#page-home .tile:hover{border-color:#c09a70}
+@media(max-width:650px){.story-welcome{grid-template-columns:1fr;padding:17px 19px 26px;gap:0}.story-welcome-art img{max-height:205px;width:auto;max-width:90%}.story-welcome h2{font-size:30px}.story-welcome p{font-size:13px}}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0}.stat{padding:14px 16px}.stat-top{display:flex;justify-content:space-between;color:var(--muted);font-size:11px}.stat strong{display:block;font:700 24px 'Playfair Display';margin-top:6px}.bar{height:7px;background:#49383b;border-radius:8px;margin-top:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--moss);border-radius:8px}
 .content-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(260px,.7fr);gap:14px}.panel{padding:19px;margin-bottom:14px}.panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}.panel h3{font:700 20px 'Playfair Display';margin:0}.sub{font-size:12px;color:var(--muted);margin-top:4px}.quest-list{display:grid;gap:8px}.quest{box-shadow:none;padding:11px 12px;display:flex;align-items:center;gap:11px;border-radius:12px}.quest.done{background:#49383b;opacity:.76}.quest input{accent-color:var(--forest);width:18px;height:18px}.quest-info{flex:1}.quest-info b{display:block;font-size:13px}.quest-info small{color:var(--muted);font-size:11px}.xp{font:11px 'DM Mono';color:#d1ad79}
 .refuge-portrait{overflow:hidden;border-radius:14px;background:#302326}.refuge-portrait img{display:block;width:100%;height:auto;max-height:420px;object-fit:cover;object-position:center}.pixel-room{min-height:205px;border-radius:14px;background:linear-gradient(#514146 0 63%,#302326 63%);position:relative;overflow:hidden;display:flex;align-items:end;justify-content:center;padding-bottom:12px}
@@ -95,7 +110,7 @@ footer{text-align:center;color:#806d70;font:10px 'DM Mono';padding:18px}
 </aside>
 <main class="main">
 <section class="page active" id="page-home">
- <div class="hero"><div><div class="eyebrow">✦ Capítulo 01 · El comienzo</div><h2>Bienvenida a tu nueva vida.</h2><p>Aquí comienza una aventura más tranquila. Cultiva hierbas, reúne conocimientos, cocina algo rico y avanza misión a misión. No hay prisa, pequeña aventurera.</p></div><div class="hero-art">🧙🏻‍♀️</div></div>
+ <div class="hero story-welcome"><div class="story-welcome-art"><img src="assets/Bruixa%20i%20h%C3%A0mster%20sota%20la%20lluna.png" alt="La pequeña maga abrazando a Usagi, su hámster dorado"></div><div class="story-welcome-copy"><div class="eyebrow">✦ Capítulo 01 · El comienzo ✦</div><h2>Bienvenida a tu nueva vida.</h2><div class="story-ornament">✧ ─── ❧ ─── ✧</div><p>Aquí comienza una aventura más tranquila. Cultiva hierbas, reúne conocimientos, cocina algo rico y avanza misión a misión. No hay prisa, pequeña aventurera.</p></div></div>
  <div class="stats">
   <div class="stat"><div class="stat-top"><span>EXPERIENCIA</span><span>✦</span></div><strong><span id="xp">0</span> XP</strong><div class="bar"><i id="xpBar" style="width:0%"></i></div><button class="btn secondary" style="margin-top:10px;width:100%" onclick="showPage('xp-history')">📜 Ver historial de XP</button></div>
   <div class="stat"><div class="stat-top"><span>NIVEL</span><span>🌟</span></div><strong id="level">1</strong><div class="sub" id="nextLevel">100 puntos para el siguiente nivel</div></div>
